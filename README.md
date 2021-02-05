@@ -1,10 +1,10 @@
-#Overview:
+# Overview:
 
 The ILLU GUI is the user interface for the Illuminator 5000. It is written in Python, but the data is read in from \*.mat files.
 
-#Usage:
+# Usage:
 
-##execute the program:
+## execute the program:
 
 ```python3 main.py```
 
