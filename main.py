@@ -4,41 +4,43 @@ import numpy as np
 # Third party imports
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-from scipy.io import savemat, loadmat
 
 # Local application imports
-from zoom import AutoYrange
+from cl_zoom import AutoYrange
+from cl_data import Data
+from cl_load import LoadMat    # custom load function
 
 
-x = np.arange(0, 5 * np.pi, 0.01)
+# load matlab data file
+read_data = LoadMat('data.mat')
+data = read_data.loadmat()
+
+# initialize data object from dict
+t_incremental = Data(**data['t_incremental'])
+raw_x1 = Data(**data['raw_x1'])
+raw_x2 = Data(**data['raw_x2'])
+
 # axesSubplot objects
 ax = []
-# line objects for every plot (n-D List for n plots on subplot)
+# line objects for every plot (nD List for n plots on subplot)
 line = []
 
-gs = GridSpec(3, 1)
+gs = GridSpec(1, 1)
+
 fig1 = plt.figure(1)
 
 ax.append(fig1.add_subplot(gs[0, 0]))
-ax.append(fig1.add_subplot(gs[1, 0], sharex=ax[0]))
-ax.append(fig1.add_subplot(gs[2, 0], sharex=ax[0]))
+line.append(ax[0].plot(t_incremental.values, raw_x1.values))
 
-line.append(ax[0].plot(x, np.sin(x), x, np.sin(2*x)))
-line.append(ax[1].plot(x, np.sin(3*x), x, np.sin(4*x)))
-line.append(ax[2].plot(x, 10*np.sin(x), x, 10*np.sin(2*x)))
 
 fig2 = plt.figure(2)
-
 ax.append(fig2.add_subplot(gs[0, 0], sharex=ax[0]))
-ax.append(fig2.add_subplot(gs[1, 0], sharex=ax[0]))
-ax.append(fig2.add_subplot(gs[2, 0], sharex=ax[0]))
+line.append(ax[1].plot(t_incremental.values, raw_x2.values))
 
-line.append(ax[3].plot(x, 5*np.sin(3*x), x, 3*np.sin(2*x)))
-line.append(ax[4].plot(x, np.sin(x), x, np.sin(4*x)))
-line.append(ax[5].plot(x, np.sin(x), x, np.sin(5*x)))
 
 # create callback for every plot
 for i in range(len(ax)):
     AutoYrange(ax[i], line[i])
+
 
 plt.show()
