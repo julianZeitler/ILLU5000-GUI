@@ -1,32 +1,25 @@
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import subplots
 
 
 class Plot:
-    def __init__(self, x_dim, y_dim, constrained=True, suptitle=None):
+    def __init__(self, x_dim, y_dim, constrained=True, subtitle=None):
         self.x_dim = x_dim
         self.y_dim = y_dim
 
-        self.fig, self.ax = plt.subplots(self.y_dim, self.x_dim, constrained_layout=constrained)
+        self.fig, self.ax = subplots(self.y_dim, self.x_dim, constrained_layout=constrained, squeeze=False, sharex=True)
 
-        if suptitle:
-            self.fig.suptitle(suptitle)
+        if subtitle:
+            self.fig.suptitle(subtitle)
     
-    def subplot(self, n, y_data, x_data, name=('name'), unit=('unit'), style=('-'), title=None):
+    def subplot(self, x_data, y_data, n=(0, 0), name=('name'), unit=('unit'), style=('-'), title=None):
         try:
             iter(y_data)
             cnt = 0
             for data in y_data:
-                self.ax[n].plot(x_data, data, style[cnt], label=name[cnt])
+                self.ax[n[1], n[0]].plot(x_data, data)
                 cnt += 1
         except:
-             self.ax[n].plot(x_data, y_data, style[cnt], label=name[0])
-
-        if title:
-            self.ax[n].set_title(title)
-        if xlabel:
-            self.ax[n].set_xlabel(xlabel)
-        if ylabel:
-            self.ax[n].set_ylabel(xlabel)
+            self.ax[n[1], n[0]].plot(x_data, y_data)
 
 
 '''

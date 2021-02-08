@@ -1,5 +1,4 @@
 import scipy.io as spio
-import numpy as np
 
 # source https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
 

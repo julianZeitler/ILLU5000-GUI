@@ -5,7 +5,7 @@ import numpy as np
 
 
 @dataclass
-class Data:
+class SingleData:
     values: np.ndarray
     name: str
     unit: str

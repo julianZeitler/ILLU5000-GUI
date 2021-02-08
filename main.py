@@ -1,7 +1,6 @@
 import numpy as np
 
 import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
 
 from cl_zoom import AutoYrange
 from cl_data import Data
@@ -19,7 +18,11 @@ raw_x1 = Data(**data['raw_x1'])
 raw_x2 = Data(**data['raw_x2'])
 raw_x3 = Data(**data['raw_x3'])
 
-fig1 = Plot(1, 1, suptitle='Figure 1')
-fig1.subplot(0, t_incremental, raw_x1, name=(raw_x1.name), title=raw_x1.name)
+fig1 = Plot(1, 1, subtitle='Figure 1')
+fig1.subplot(t_incremental.values, raw_x1.values, n=(0, 0))
+
+fig2 = Plot(1, 2, subtitle='Figure 2')
+fig2.subplot(t_incremental.values, raw_x2.values, n=(0, 0))
+fig2.subplot(t_incremental.values, raw_x3.values, n=(0, 1))
 
 plt.show()
