@@ -1,14 +1,12 @@
-# Standard library imports
 import numpy as np
 
-# Third party imports
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
-# Local application imports
 from cl_zoom import AutoYrange
 from cl_data import Data
 from cl_load import LoadMat    # custom load function
+from cl_plot import Plot
 
 
 # load matlab data file
@@ -19,28 +17,9 @@ data = read_data.loadmat()
 t_incremental = Data(**data['t_incremental'])
 raw_x1 = Data(**data['raw_x1'])
 raw_x2 = Data(**data['raw_x2'])
+raw_x3 = Data(**data['raw_x3'])
 
-# axesSubplot objects
-ax = []
-# line objects for every plot (nD List for n plots on subplot)
-line = []
-
-gs = GridSpec(1, 1)
-
-fig1 = plt.figure(1)
-
-ax.append(fig1.add_subplot(gs[0, 0]))
-line.append(ax[0].plot(t_incremental.values, raw_x1.values))
-
-
-fig2 = plt.figure(2)
-ax.append(fig2.add_subplot(gs[0, 0], sharex=ax[0]))
-line.append(ax[1].plot(t_incremental.values, raw_x2.values))
-
-
-# create callback for every plot
-for i in range(len(ax)):
-    AutoYrange(ax[i], line[i])
-
+fig1 = Plot(1, 1, suptitle='Figure 1')
+fig1.subplot(0, t_incremental, raw_x1, name=(raw_x1.name), title=raw_x1.name)
 
 plt.show()
