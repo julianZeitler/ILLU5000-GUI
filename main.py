@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from cl_zoom import AutoYrange
 from cl_data import Data
-from cl_load import LoadMat    # custom load function
+from func_load import LoadMat    # custom load function
 from cl_plot import Plot
 
 
