@@ -1,25 +1,27 @@
+#! /usr/bin/python3
 import numpy as np
+from sys import argv
 
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
 from cl_zoom import AutoYrange
-from cl_data import Data
-from cl_load import LoadMat    # custom load function
+from cl_data import Top
+from func_load import loadmat # custom load function
 from cl_plot import Plot
 
 
+# get arguments
+# args[0] is the file itself
+args = argv
+if len(args) > 2:
+    raise AttributeError(f'Expected one argument, got {len(args)-1}')
+
 # load matlab data file
-read_data = LoadMat('data.mat')
-data = read_data.loadmat()
+data = loadmat(args[1])
 
 # initialize data object from dict
-t_incremental = Data(**data['t_incremental'])
-raw_x1 = Data(**data['raw_x1'])
-raw_x2 = Data(**data['raw_x2'])
-raw_x3 = Data(**data['raw_x3'])
+top = Top(**data)
 
-fig1 = Plot(1, 1, suptitle='Figure 1')
-fig1.subplot(0, t_incremental, raw_x1, name=(raw_x1.name), title=raw_x1.name)
 
-plt.show()
+print(top.trace.data['raw_force'].name)
