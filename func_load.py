@@ -1,4 +1,5 @@
 import scipy.io as spio
+from numpy import ndarray
 
 # source https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
 
@@ -25,8 +26,21 @@ def loadmat(filename):
             elem = matobj.__dict__[strg]
             if isinstance(elem, spio.matlab.mio5_params.mat_struct):
                 dic[strg] = _todict(elem)
+            elif isinstance(elem, ndarray):
+                dic[strg] = _tolist(elem)
             else:
                 dic[strg] = elem
         return dic
+
+    def _tolist(array):
+        elem_list = []
+        for elem in array:
+            if isinstance(elem, spio.matlab.mio5_params.mat_struct):
+                elem_list.append(_todict(elem))
+            elif isinstance(elem, ndarray):
+                elem_list.append(_tolist(elem))
+            else:
+                elem_list.append(elem)
+        return elem_list
 
     return _check_keys(data)
