@@ -1,27 +1,39 @@
 #! /usr/bin/python3
-import numpy as np
 from sys import argv
 
-import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
-
-from cl_zoom import AutoYrange
 from cl_data import Top
-from func_load import loadmat # custom load function
 from cl_plot import Plot
+from func_load import loadmat   # custom load function
+from func_save_config import save_config
 
 
 # get arguments
 # args[0] is the file itself
 args = argv
-if len(args) > 2:
-    raise AttributeError(f'Expected one argument, got {len(args)-1}')
+
+# argument handling
+#if len(args) <= 1:
+#    raise AttributeError(f'Please specify *.mat plot file')
+if len(args) == 2:
+    file = args[1]
+elif len(args) >= 3:
+    file = args[1]
+    conf_file = args[2:]
 
 # load matlab data file
-data = loadmat(args[1])
+#data = loadmat(file)
+data = loadmat('data.mat')
+try:
+    conf = loadmat(conf_file)
+except: pass
 
 # initialize data object from dict
 top = Top(**data)
 
-
-print(top.trace.data['raw_force'].name)
+print(top.plot_data.data['raw_force'].name)
+print(top.plot_data.meta.worker)
+print(top.plot_data.plot['raw'].figure[0].title)
+print(top.plot_data.plot['raw'].figure[1].title)
+print(top.plot_data.plot['raw'].figure[0].subplot[0].plot_type)
+print(top.plot_data.plot['raw'].figure[0].subplot[0].x_label)
+print(top.plot_data.plot['frequency'].figure[0].subplot[0].x_label)

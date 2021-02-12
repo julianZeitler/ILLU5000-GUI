@@ -1,54 +1,67 @@
 from dataclasses import dataclass
 
 
-@dataclass
-class Config:
-    subplot: tuple = (1, 1)
-    title: str = 'Default title'
-    legend_location: str = 'upper left'
-    x_label: str = 'default x_label'
-    y_label: str = 'default y_label'
-
-
-@dataclass
-class PlotData:
-    values: list
-    name: str
-    unit: str
-
-
-@dataclass
-class Meta:
-    timestamp_last_sample: float
-    location: str
-    machine: str
-    worker: str
-
-
 class Top:
-    def __init__(self, __header__: bytes, __version__: str, __globals__: list, trace):
+    def __init__(self, __header__: bytes, __version__: str, __globals__: list, plot_data):
         self.__header__ = __header__
         self.__version__ = __version__
         self.__globals__ = __globals__
 
         # map the trace dictionary on the Trace class
-        trace.pop('static')
-        self.trace = self.Trace(**trace)
+        self.plot_data = self.PlotData(**plot_data)
 
-    class Trace:
-        def __init__(self, data, meta, plot):
-            data.pop('static')
-            meta.pop('static')
-            plot.pop('static')
-            self.meta = Meta(**meta)
+    class PlotData:
+        def __init__(self, data, plot, meta):
+            data.pop('dyn')
+            plot.pop('dyn')
+            # add the plot information + data to Data objects for every k, v in data
+            self.data = {k: self.Data(**v) for k, v in data.items()}
 
-            # add the plot information + data to PlotData objects for every k, v in data
-            # values of data are PlotData objects, e.g. the name of raw_x1 can be accessed like this:
-            # top.trace.data['raw_x1'].name
-            self.data = {k: PlotData(**v) for k, v in data.items()}
+            self.plot = {k: self.Figure(v) for k, v in plot.items()}
 
-            # overwrite the standard config with custom config
-            # and create Config objects
-            self.plot = {k: [Config(**inner_v) for inner_v in v]
-                         for k, v in plot.items()}
+            self.meta = self.Meta(**meta)
 
+        @dataclass
+        class Data:
+            values: list
+            name: str
+            unit: str
+
+        @dataclass
+        class Meta:
+            timestamp_last_sample: float
+            location: str
+            machine: str
+            worker: str
+
+        class Figure:
+            def __init__(self, figure):
+                self.figure = [self.FigConfig(**fig) for fig in figure]
+
+            class FigConfig:
+                def __init__(self,
+                             subplot,
+                             title: str = ' ',
+                             subplot_rows: int = 1,
+                             subplot_cols: int = 1
+                             ):
+
+                    self.title = title
+                    self.subplot_rows = subplot_rows
+                    self.subplot_cols = subplot_cols
+
+                    if type(subplot) == dict:
+                        self.subplot = [self.SubplotConfig(**subplot)]
+                    else:
+                        self.subplot = [self.SubplotConfig(**plot) for plot in subplot]
+
+                @dataclass
+                class SubplotConfig:
+                    plots: list
+                    title: str = ' '
+                    plot_type: str = 'LinLin'
+                    x_label: str = 'X-Axis'
+                    y_label: str = 'Y-Axis'
+                    legend: str = 'upper left'
+                    share_x: str = None
+                    share_y: str = None
