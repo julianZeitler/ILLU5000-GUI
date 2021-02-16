@@ -1,5 +1,7 @@
 from dataclasses import dataclass
+
 from plt_LinLin import LinLin
+from func_import import dyn_import_cls
 
 
 class Top:
@@ -53,18 +55,17 @@ class Top:
                     self.subplot_cols = subplot_cols
 
                     if type(subplot) == dict:
-                        self.subplot = [LinLin(**subplot)]
+                        try:
+                            cls = dyn_import_cls('plt_' + subplot['plot_type'], subplot['plot_type'])
+                        except KeyError:
+                            cls = dyn_import_cls('plt_LinLin', 'LinLin')
+                        self.subplot = [cls(**subplot)]
+
                     else:
-                        self.subplot = [LinLin(**plot) for plot in subplot]
-'''
-                @dataclass
-                class SubplotConfig:
-                    plots: list
-                    title: str = ' '
-                    plot_type: str = 'LinLin'
-                    x_label: str = 'X-Axis'
-                    y_label: str = 'Y-Axis'
-                    legend: str = 'upper left'
-                    share_x: str = None
-                    share_y: str = None
-'''
+                        self.subplot = []
+                        for plot in subplot:
+                            try:
+                                cls = dyn_import_cls('plt_' + plot['plot_type'], plot['plot_type'])
+                            except KeyError:
+                                cls = dyn_import_cls('plt_LinLin', 'LinLin')
+                            self.subplot.append(cls(**plot))
