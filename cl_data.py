@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from plt_LinLin import LinLin
 
 
 class Top:
@@ -52,10 +53,10 @@ class Top:
                     self.subplot_cols = subplot_cols
 
                     if type(subplot) == dict:
-                        self.subplot = [self.SubplotConfig(**subplot)]
+                        self.subplot = [LinLin(**subplot)]
                     else:
-                        self.subplot = [self.SubplotConfig(**plot) for plot in subplot]
-
+                        self.subplot = [LinLin(**plot) for plot in subplot]
+'''
                 @dataclass
                 class SubplotConfig:
                     plots: list
@@ -66,3 +67,4 @@ class Top:
                     legend: str = 'upper left'
                     share_x: str = None
                     share_y: str = None
+'''
