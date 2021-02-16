@@ -12,8 +12,6 @@ class Top:
 
     class PlotData:
         def __init__(self, data, plot, meta):
-            data.pop('dyn')
-            plot.pop('dyn')
             # add the plot information + data to Data objects for every k, v in data
             self.data = {k: self.Data(**v) for k, v in data.items()}
 
@@ -36,7 +34,10 @@ class Top:
 
         class Figure:
             def __init__(self, figure):
-                self.figure = [self.FigConfig(**fig) for fig in figure]
+                self.figure = []
+                for fig in figure.values():
+                    for f in fig:
+                        self.figure.append(self.FigConfig(**f))
 
             class FigConfig:
                 def __init__(self,
