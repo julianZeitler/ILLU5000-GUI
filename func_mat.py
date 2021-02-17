@@ -20,7 +20,7 @@ def inner_classes(obj):
     return [cls_attribute for cls_attribute in obj.__dict__.values() if 'object' in str(cls_attribute)]
 
 
-def save(object, names, file: str = None):
+def save(object, file: str = None, names=['PlotData']):
     ''' Save is a recursive function, which goes over the hole data structure (cl_data)
         and converts it back to a dictionary
     :param object: The object, which should be converted
@@ -41,20 +41,20 @@ def save(object, names, file: str = None):
         # val.__class__.__name__ returns the name of the class val was created from
         if str(val.__class__.__name__) in names:
             names = inner_classes(val)
-            dic[key] = save(val, names)
+            dic[key] = save(val, names=names)
 
         # handle dictionaries
         elif isinstance(val, dict):
             for k, v in val.items():
                 names = inner_classes(v)
-                dic[key][k] = save(v, names)
+                dic[key][k] = save(v, names=names)
 
         # handle lists
         elif isinstance(val, list):
             for i in range(len(val)):
                 try:
                     names = inner_classes(val[i])
-                    val[i] = save(val[i], names)
+                    val[i] = save(val[i], names=names)
                 except: pass
 
         elif is_dataclass(val):

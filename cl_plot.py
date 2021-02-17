@@ -9,6 +9,7 @@ class Plot:
     def __init__(self, file):
         self.read_data = load(file)
         top = Top(**self.read_data)
+        save(top, file='save.mat')
 
         self.data = top.plot_data.data      # dictionary
         self.plot = top.plot_data.plot    # dictionary
@@ -22,5 +23,6 @@ class Plot:
         pass
 
     def create_subplots(self, fig):
-        obj = dyn_import_obj('plt_' + self.plot_type, self.plot_type)
+        pass
+        #obj = dyn_import_obj('plt_' + self.plot_type, self.plot_type)
 
