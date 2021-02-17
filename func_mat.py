@@ -1,4 +1,5 @@
 from dataclasses import is_dataclass, asdict
+from copy import deepcopy
 
 from numpy import ndarray
 from scipy.io import loadmat, savemat
@@ -19,14 +20,17 @@ def inner_classes(obj):
     return [cls_attribute for cls_attribute in obj.__dict__.values() if 'object' in str(cls_attribute)]
 
 
-def save(instance, names, file: str = None):
+def save(object, names, file: str = None):
     ''' Save is a recursive function, which goes over the hole data structure (cl_data)
         and converts it back to a dictionary
-    :param instance: The object, which should be converted
+    :param object: The object, which should be converted
     :param names: [typically: 'PlotData'] The names of the inner classes, required for the next recursion step
     :param file: Default: None. If specified, save writes the dictionary to .mat file with the name specified in file
     :return: Returns a dictionary
     '''
+
+    # Python passes arguments by assignment, so the original object would be changed
+    instance = deepcopy(object)
 
     # vars() returns __dict__ attribute of an object
     # --> extracts the objects variables as a dictionary
@@ -57,7 +61,6 @@ def save(instance, names, file: str = None):
             dic[key] = asdict(val)
 
     if file:
-        print(dic)
         savemat(file, dic)
     return dic
 

@@ -9,8 +9,6 @@ class Plot:
     def __init__(self, file):
         self.read_data = load(file)
         top = Top(**self.read_data)
-        dic = save(top, 'PlotData', file='save.mat')
-        print(dic)
 
         self.data = top.plot_data.data      # dictionary
         self.plot = top.plot_data.plot    # dictionary
