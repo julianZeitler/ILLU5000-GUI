@@ -6,23 +6,26 @@ The ILLU GUI is the user interface for the Illuminator 5000. It is written in Py
 
 ## execute the program:
 
-```python3 main.py```
+[...]
 
 
 ## Data format:
 
-The plot data is stored inside a dataclass, which also contains meta information
-the dataclass looks like this:
+the data is read from a matlab file and is then written into nested classes. The Syntax for accessing each item looks like this:
+
 
 ```python
-@dataclass
-class Data:
-    values: np.ndarray
-    name: str
-    unit: str
+top.plot_data.data['raw_force'].values
+top.plot_data.data['raw_force'].name
+top.plot_data.data['raw_force'].unit
+
+top.plot_data.meta.timestamp_last_sample
+top.plot_data.meta.location
+top.plot_data.meta.machine
+top.plot_data.meta.worker
+
+top.plot_data.plot['raw'].figure[0].title
+top.plot_data.plot['raw'].figure[0].subplot[0].x_label
+top.plot_data.plot['raw'].figure[0].subplot[0].plot_type
 ```
 
-`Data` can later be tailored to the specific needs.
-`values` contains the sensor data and is of type numpy array
-
-When read from the matlab file, the data is in form of a nested dictionary. Each plot is represented by a `key:value` pair. `key` is the name of the plot, `value` is another dictionary, which contains the information, that is later used to instanciate a Data object. The dictionary gets unpacked by the `LoadMat` class in `cl_load.py`.
