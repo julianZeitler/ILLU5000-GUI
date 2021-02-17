@@ -13,7 +13,7 @@ d2 = {'plot_data': {'data': {'raw_force': {'values': raw_x1, 'name': 'Force', 'u
                              'raw_voltage': {'values': raw_x3, 'name': 'Voltage', 'unit': 'V'},
                              't_incremental': {'values': t_incremental, 'name': 'Time in s', 'unit': 's'}},
 
-                    'meta': {'timestamp_last_sample': 123456.789,
+                    'meta': {'timestamp_last_sample': 12345.6789,
                              'location': 'Deutschland, Oberkochen',
                              'machine': 'bla',
                              'worker': 'Max Mustermann'},

@@ -9,6 +9,3 @@ class LinLog(Base):
 
         super().__init__(*args, **kwargs)
         self.foo = foo
-
-    def plot(self, plots):
-        pass

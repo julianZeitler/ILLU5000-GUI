@@ -54,17 +54,14 @@ class Top:
                     self.subplot_cols = subplot_cols
 
                     if type(subplot) == dict:
+                        subplot = [subplot]
+
+                    self.subplot = []
+                    for plot in subplot:
                         try:
-                            cls = dyn_import_cls('plt_' + subplot['plot_type'], subplot['plot_type'])
+                            cls = dyn_import_cls('plt_' + plot['plot_type'], plot['plot_type'])
+
+                        # Default is LinLin
                         except KeyError:
                             cls = dyn_import_cls('plt_LinLin', 'LinLin')
-                        self.subplot = [cls(**subplot)]
-
-                    else:
-                        self.subplot = []
-                        for plot in subplot:
-                            try:
-                                cls = dyn_import_cls('plt_' + plot['plot_type'], plot['plot_type'])
-                            except KeyError:
-                                cls = dyn_import_cls('plt_LinLin', 'LinLin')
-                            self.subplot.append(cls(**plot))
+                        self.subplot.append(cls(**plot))

@@ -17,3 +17,6 @@ class Base:
         self.share_x = share_x
         self.share_y = share_y
         self.plot_type = plot_type
+
+    def plot(self, x_vals, y_vals):
+        pass

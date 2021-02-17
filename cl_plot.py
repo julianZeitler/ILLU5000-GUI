@@ -9,12 +9,18 @@ class Plot:
     def __init__(self, file):
         self.read_data = load(file)
         top = Top(**self.read_data)
-        save(top, file='save.mat')
+
+        # demo save
+        ################################################################
+        dic = save(top, file='save.mat')
+        top2 = Top(**dic)
+        print(top2.plot_data.plot['raw'].figure[0].subplot[0].plot_type)
+        print(top2.plot_data.plot['raw'].figure[0].subplot[0].foo)
+        ################################################################
 
         self.data = top.plot_data.data      # dictionary
         self.plot = top.plot_data.plot    # dictionary
         self.meta = top.plot_data.meta      # object
-        self.plot_type = top.plot_data.plot['raw'].figure[0].subplot[0].plot_type
 
         for key, val in self.plot.items():
             self.create_figures(key, val)

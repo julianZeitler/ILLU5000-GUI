@@ -72,6 +72,7 @@ def load(filename):
     as it cures the problem of not properly recovering python dictionaries
     from mat files. It calls the function check keys to cure all entries
     which are still mat-objects
+
     :param filename: Name of matlab file
     :return: Dictionary of the matlab data structure
     '''
