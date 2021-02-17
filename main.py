@@ -3,8 +3,7 @@ from sys import argv
 
 from cl_data import Top
 from cl_plot import Plot
-from func_load import loadmat   # custom load function
-from func_save import save
+from func_mat import load, save  # custom load function
 
 
 # get arguments
@@ -24,9 +23,9 @@ elif len(args) >= 3:
 
 # load matlab data file
 #data = loadmat(file)
-data = loadmat('data.mat')
+data = load('data.mat')
 try:
-    conf = loadmat(conf_file)
+    conf = load(conf_file)
 except: pass
 
 plot = Plot('data.mat')

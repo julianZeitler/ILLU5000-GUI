@@ -1,4 +1,4 @@
-class LinLin:
+class LinLog:
     def __init__(self,
                  plots,
                  title='',
@@ -17,6 +17,3 @@ class LinLin:
         self.share_x = share_x
         self.share_y = share_y
         self.plot_type = plot_type
-
-    def create_plots(self, plots):
-        pass

@@ -19,8 +19,9 @@ d2 = {'plot_data': {'data': {'raw_force': {'values': raw_x1, 'name': 'Force', 'u
                              'worker': 'Max Mustermann'},
                     'plot': {'raw': {'figure': [{'title': 'Title of fig1',
                                                  'subplot': [{'plots': [['t_incremental', 'raw_force'],
-                                                             ['t_incremental', 'current']],
-                                                              'x_label': 'X-Axis of plot 1'},
+                                                                        ['t_incremental', 'current']],
+                                                              'x_label': 'X-Axis of plot 1',
+                                                              'plot_type': 'LinLog'},
 
                                                              {'plots': [['t_incremental', 'raw_voltage']]}]},
 
