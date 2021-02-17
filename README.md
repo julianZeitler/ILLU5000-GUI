@@ -25,7 +25,16 @@ top.plot_data.meta.machine
 top.plot_data.meta.worker
 
 top.plot_data.plot['raw'].figure[0].title
+top.plot_data.plot['raw'].figure[0].subplot_rows
+top.plot_data.plot['raw'].figure[0].subplot_cols
 top.plot_data.plot['raw'].figure[0].subplot[0].x_label
 top.plot_data.plot['raw'].figure[0].subplot[0].plot_type
+top.plot_data.plot['raw'].figure[0].subplot[0].plots
+top.plot_data.plot['raw'].figure[0].subplot[0].x_label
+top.plot_data.plot['raw'].figure[0].subplot[0].y_label
+top.plot_data.plot['raw'].figure[0].subplot[0].legend
+top.plot_data.plot['raw'].figure[0].subplot[0].name
+top.plot_data.plot['raw'].figure[0].subplot[0].share_x
+top.plot_data.plot['raw'].figure[0].subplot[0].share_y
 ```
-
+Dynamic Structures like `data`, `plot` or `figure`/`subplot` can be accessed by subscription. `data` and `plot` are dictionaries while `figure` and `subplot` are lists.
