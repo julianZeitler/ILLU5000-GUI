@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-# function for dynamically importing classes
+# function to dynamically import classes
 from func_import import dyn_import_cls
 
 
