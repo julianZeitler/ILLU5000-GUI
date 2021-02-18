@@ -1,5 +1,6 @@
 #! /usr/bin/python3
 from sys import argv
+import matplotlib.pyplot as plt
 
 from cl_data import Top
 from cl_plot import Plot
@@ -28,4 +29,6 @@ try:
     conf = load(conf_file)
 except: pass
 
-plot = Plot('data.mat')
+plot = Plot('data.mat', 'raw')
+
+plt.show()

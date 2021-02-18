@@ -46,12 +46,14 @@ class Top:
                              subplot,
                              title: str = ' ',
                              subplot_rows: int = 1,
-                             subplot_cols: int = 1
+                             subplot_cols: int = 1,
+                             constrained_layout: bool = True
                              ):
 
                     self.title = title
                     self.subplot_rows = subplot_rows
                     self.subplot_cols = subplot_cols
+                    self.constrained_layout = constrained_layout
 
                     if type(subplot) == dict:
                         subplot = [subplot]
