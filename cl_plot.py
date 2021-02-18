@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from numpy import ndarray, asarray
 
 from func_mat import load, save
 from cl_data import Top
@@ -6,29 +7,25 @@ from func_import import dyn_import_obj
 
 
 class Plot:
-    def __init__(self, file):
+    def __init__(self, file, key):
         self.read_data = load(file)
         top = Top(**self.read_data)
-
-        # demo save
-        ################################################################
-        dic = save(top, file='save.mat')
-        top2 = Top(**dic)
-        print(top2.plot_data.plot['raw'].figure[0].subplot[0].plot_type)
-        print(top2.plot_data.plot['raw'].figure[0].subplot[0].foo)
-        ################################################################
 
         self.data = top.plot_data.data      # dictionary
         self.plot = top.plot_data.plot    # dictionary
         self.meta = top.plot_data.meta      # object
 
-        for key, val in self.plot.items():
-            self.create_figures(key, val)
+        for fig in self.plot[key].figure:
+            self.create_figures(fig, self.data)
 
-    def create_figures(self, name, fig):
-        pass
+    @staticmethod
+    def create_figures(figure, data):
+        fig, axs = plt.subplots(figure.subplot_rows,
+                                figure.subplot_cols,
+                                constrained_layout=figure.constrained_layout)
+        if not isinstance(axs, ndarray):
+            axs = asarray([axs])
 
-    def create_subplots(self, fig):
-        pass
-        #obj = dyn_import_obj('plt_' + self.plot_type, self.plot_type)
-
+        for i in range(len(figure.subplot)):
+            #for plot in figure.subplot[i].plots:
+            figure.subplot[i].plot(axs[i], data)

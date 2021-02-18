@@ -13,21 +13,21 @@ save writes the cl_data object to a dictionary, which can then be written to a m
 
 
 def inner_classes(obj):
-    '''
+    """
     :param obj: Class instance
     :return: A list of class instances, that were instanciated by a class inside of the class obj originated from
-    '''
+    """
     return [cls_attribute for cls_attribute in obj.__dict__.values() if 'object' in str(cls_attribute)]
 
 
 def save(object, file: str = None, names=['PlotData']):
-    ''' Save is a recursive function, which goes over the hole data structure (cl_data)
+    """ Save is a recursive function, which goes over the hole data structure (cl_data)
         and converts it back to a dictionary
     :param object: The object, which should be converted
     :param names: [typically: 'PlotData'] The names of the inner classes, required for the next recursion step
     :param file: Default: None. If specified, save writes the dictionary to .mat file with the name specified in file
     :return: Returns a dictionary
-    '''
+    """
 
     # Python passes arguments by assignment, so the original object would be changed
     instance = deepcopy(object)
@@ -66,7 +66,7 @@ def save(object, file: str = None, names=['PlotData']):
 
 
 def load(filename):
-    '''
+    """
     source https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
     this function should be called instead of direct scipy.io.loadmat
     as it cures the problem of not properly recovering python dictionaries
@@ -75,7 +75,7 @@ def load(filename):
 
     :param filename: Name of matlab file
     :return: Dictionary of the matlab data structure
-    '''
+    """
     data = loadmat(filename, struct_as_record=False, squeeze_me=True)
 
     def _check_keys(dic):
