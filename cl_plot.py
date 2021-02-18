@@ -1,9 +1,9 @@
-import matplotlib.pyplot as plt
 from numpy import ndarray, asarray
 
-from func_mat import load, save
+from matplotlib.pyplot import subplots
+
+from func_mat import load
 from cl_data import Top
-from func_import import dyn_import_obj
 
 
 class Plot:
@@ -15,17 +15,27 @@ class Plot:
         self.plot = top.plot_data.plot    # dictionary
         self.meta = top.plot_data.meta      # object
 
+        self.axes = []
         for fig in self.plot[key].figure:
-            self.create_figures(fig, self.data)
+            self.axes += list(self.create_figures(fig, self.data))
 
     @staticmethod
     def create_figures(figure, data):
-        fig, axs = plt.subplots(figure.subplot_rows,
-                                figure.subplot_cols,
-                                constrained_layout=figure.constrained_layout)
+        fig, axs = subplots(figure.subplot_rows,
+                            figure.subplot_cols,
+                            constrained_layout=figure.constrained_layout)
+
         if not isinstance(axs, ndarray):
             axs = asarray([axs])
 
-        for i in range(len(figure.subplot)):
-            #for plot in figure.subplot[i].plots:
-            figure.subplot[i].plot(axs[i], data)
+        if axs.ndim == 2:
+            cnt = 0
+            for i in range(len(axs)):
+                for j in range(len(axs[i])):
+                    figure.subplot[cnt].plot(axs[i, j], data)
+                    cnt += 1
+        else:
+            for i in range(len(axs)):
+                figure.subplot[i].plot(axs[i], data)
+
+        return axs

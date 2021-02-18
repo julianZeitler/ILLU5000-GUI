@@ -2,14 +2,13 @@
 from sys import argv
 import matplotlib.pyplot as plt
 
-from cl_data import Top
 from cl_plot import Plot
-from func_mat import load, save  # custom load function
+from data import data_mat
 
 
 # get arguments
 # args[0] is the file itself
-args = argv
+# args = argv
 
 '''
 # argument handling
@@ -21,13 +20,7 @@ elif len(args) >= 3:
     file = args[1]
     conf_file = args[2:]
 '''
-
-# load matlab data file
-#data = loadmat(file)
-data = load('data.mat')
-try:
-    conf = load(conf_file)
-except: pass
+data_mat()
 
 plot = Plot('data.mat', 'raw')
 
