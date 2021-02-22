@@ -24,22 +24,17 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                               'x_label': 'X-Axis of plot 1',
                                                               'plot_type': 'LinLog',
                                                               'title': 'subplot 1',
-                                                              'legend': 'lower left',
-                                                              'position': [0, 0]},
+                                                              'legend': 'lower left'},
 
-                                                             {'plots': [['t_incremental', 'raw_voltage']],
-                                                              'position': [0, 1]},
-                                                             {'plots': [['t_incremental', 'raw_force']],
-                                                              'position': [1, 0]},
-                                                             {'plots': [['t_incremental', 'raw_voltage']],
-                                                              'position': [1, 1]}]},
+                                                             {'plots': [['t_incremental', 'raw_voltage']]},
+                                                             {'plots': [['t_incremental', 'raw_force']]},
+                                                             {'plots': [['t_incremental', 'raw_voltage']]}]},
 
                                                 {'title': 'Title of fig2',
                                                  'subplot_rows': 2,
-                                                 'subplot': [{'plots': [['t_incremental', 'raw_voltage']],
-                                                              'position': [0, 0]},
-                                                             {'plots': [['t_incremental', 'current']],
-                                                              'position': [1, 0]}]}]}}}}
+                                                 'subplot': [{'plots': [['t_incremental', 'raw_voltage']]},
+                                                             {'plots': [['t_incremental', 'current']]}]}],
+                                     'linkaxes': [[0, 0], [0, 1], [1, 0]]}}}}
 
 
 def data_mat():

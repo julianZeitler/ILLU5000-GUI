@@ -63,7 +63,7 @@ class Top:
                             # the config of every figure is passed to FigConfig
                             self.figure.append(self.FigConfig(**fig))
                     elif key == 'linkaxes':
-                        self.linkaxes = figure.values()
+                        self.linkaxes = val
 
             class FigConfig:
                 # Inside the figure configuration is also the subplot config

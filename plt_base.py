@@ -4,7 +4,6 @@ from numpy import asarray
 class Base:
     def __init__(self,
                  plots,
-                 position,
                  title='',
                  x_label='time',
                  y_label='Y-Axis',
@@ -14,7 +13,6 @@ class Base:
                  plot_type='LinLin'):
 
         self.plots = plots
-        self.position = position
         self.title = title
         self.x_label = x_label
         self.y_label = y_label

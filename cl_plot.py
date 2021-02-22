@@ -17,33 +17,29 @@ class Plot:
         self.plot = top.plot_data.plot    # dictionary
         self.meta = top.plot_data.meta      # object
 
-        self.axes = empty(len(self.plot[key].figure), dtype=object)
-        cnt = 0
-        for fig in self.plot[key].figure:
-            self.axes[cnt] = self.create_figures(fig, self.data)
-            cnt += 1
+        # self.axes is a 2D list with the first dimension as the figures and the second as axes objects
+        self.axes = [self._create_figures(fig, self.data) for fig in self.plot[key].figure]
+
+        self._linkaxes(self.plot[key].linkaxes, self.axes)
 
     @staticmethod
-    def create_figures(fig_config, data):
-        fig = figure(constrained_layout=fig_config.constrained_layout)
-        gs = GridSpec(fig_config.subplot_rows, fig_config.subplot_cols, figure=fig)
+    def _linkaxes(link_list, axs_list):
+        ax_list = [axs_list[link[0]][link[1]] for link in link_list]
+        ax_list[0].get_shared_x_axes().join(*ax_list)
 
-        axs = empty((fig_config.subplot_rows, fig_config.subplot_cols), dtype=object)
+    @staticmethod
+    def _create_figures(fig_config, data):
+        fig, axs = subplots(ncols=fig_config.subplot_cols,
+                            nrows=fig_config.subplot_rows,
+                            constrained_layout=fig_config.constrained_layout)
 
-        for plot in fig_config.subplot:
-            axs[plot.position[0], plot.position[1]] = fig.add_subplot(gs[plot.position[0], plot.position[1]])
+        # convert numpy array to python list
+        if axs.ndim == 1:
+            axs = list(axs)
+        elif axs.ndim == 2:
+            axs = [ax for dim in axs for ax in dim]
 
-        if not isinstance(axs, ndarray):
-            axs = asarray([axs])
-
-        if axs.ndim == 2:
-            cnt = 0
-            for i in range(len(axs)):
-                for j in range(len(axs[i])):
-                    fig_config.subplot[cnt].plot(axs[i, j], data)
-                    cnt += 1
-        else:
-            for i in range(len(axs)):
-                fig_config.subplot[i].plot(axs[i], data)
+        for ax in axs:
+            fig_config.subplot[axs.index(ax)].plot(ax, data)
 
         return axs
