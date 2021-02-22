@@ -1,8 +1,4 @@
-from numpy import ndarray, asarray, empty
-
 from matplotlib.pyplot import subplots
-from matplotlib.gridspec import GridSpec
-from matplotlib.pyplot import figure
 
 from func_mat import load
 from cl_data import Top

@@ -1,6 +1,5 @@
-from plt_base import Base
+from plt_TwoD import TwoD
 
 
-class LinLin(Base):
-    # LinLin inherits __init__() and plot methods from Base class
+class LinLin(TwoD):
     pass
