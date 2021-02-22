@@ -56,11 +56,14 @@ class Top:
             def __init__(self, figure):
                 # figure is a dictionary with the figure config as its value
                 self.figure = []
-                for lst in figure.values():
-                    # the configuration is a list
-                    for fig in lst:
-                        # the config of every figure is passed to FigConfig
-                        self.figure.append(self.FigConfig(**fig))
+                for key, val in figure.items():
+                    if key == 'figure':
+                        # the configuration is a list
+                        for fig in val:
+                            # the config of every figure is passed to FigConfig
+                            self.figure.append(self.FigConfig(**fig))
+                    elif key == 'linkaxes':
+                        self.linkaxes = figure.values()
 
             class FigConfig:
                 # Inside the figure configuration is also the subplot config
