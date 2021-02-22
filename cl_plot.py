@@ -23,8 +23,10 @@ class Plot:
         self._linkaxes(self.plot[key].linkaxes, self.axes)
 
     @staticmethod
-    def _linkaxes(link_list, axs_list):
-        ax_list = [axs_list[link[0]][link[1]] for link in link_list]
+    def _linkaxes(link_list, all_ax_list):
+        ax_list = [all_ax_list[link[0]][link[1]] for link in link_list]
+
+        # links all axes in ax_list
         ax_list[0].get_shared_x_axes().join(*ax_list)
 
     @staticmethod
@@ -33,7 +35,7 @@ class Plot:
                             nrows=fig_config.subplot_rows,
                             constrained_layout=fig_config.constrained_layout)
 
-        # convert numpy array to python list
+        # convert multi-dim numpy array to single-dim python list
         if axs.ndim == 1:
             axs = list(axs)
         elif axs.ndim == 2:
