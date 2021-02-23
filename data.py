@@ -27,7 +27,8 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                               'legend': 'lower left'},
 
                                                              {'plots': [['t_incremental', 'raw_voltage']]},
-                                                             {'plots': [['t_incremental', 'raw_force']]},
+                                                             {'plots': [['t_incremental', 'raw_force']],
+                                                              'plot_type': 'LinLog'},
                                                              {'plots': [['t_incremental', 'raw_voltage']]}]},
 
                                                 {'title': 'Title of fig2',
