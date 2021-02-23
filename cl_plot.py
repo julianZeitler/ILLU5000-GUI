@@ -17,19 +17,19 @@ class Plot:
         # self.axes is a 2D list with the first dimension as the figures and the second as axes objects
         self.axes = [self._create_figures(fig, self.data) for fig in self.plot[key].figure]
 
-        self._linkaxes(self.plot[key].linkaxes, self.axes)
+        # self.ax_list contains the ax objects for every subplot that is linked
+        self.ax_list = [self.axes[link[0]][link[1]] for link in self.plot[key].linkaxes]
 
-        for fig in self.axes:
-            for ax in fig:
-                AutoYrange(ax)
+        self._linkaxes()
+        self._auto_zoom()
 
-    @staticmethod
-    def _linkaxes(link_list, all_ax_list):
-        # create list with the axis objects which should be connected
-        ax_list = [all_ax_list[link[0]][link[1]] for link in link_list]
-
+    def _linkaxes(self):
         # links all axes in ax_list
-        ax_list[0].get_shared_x_axes().join(*ax_list)
+        self.ax_list[0].get_shared_x_axes().join(*self.ax_list)
+
+    def _auto_zoom(self):
+        for ax in self.ax_list:
+            AutoYrange(ax)
 
     @staticmethod
     def _create_figures(fig_config, data):
