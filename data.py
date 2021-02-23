@@ -22,7 +22,7 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                  'subplot': [{'plots': [['t_incremental', 'raw_force'],
                                                                         ['t_incremental', 'current']],
                                                               'x_label': 'X-Axis of plot 1',
-                                                              'plot_type': 'LinLog',
+                                                              'plot_type': 'LinLin',
                                                               'title': 'subplot 1',
                                                               'legend': 'lower left'},
 

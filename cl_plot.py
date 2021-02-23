@@ -2,6 +2,7 @@ from matplotlib.pyplot import subplots
 
 from func_mat import load
 from cl_data import Top
+from cl_zoom import AutoYrange
 
 
 class Plot:
@@ -18,8 +19,13 @@ class Plot:
 
         self._linkaxes(self.plot[key].linkaxes, self.axes)
 
+        for fig in self.axes:
+            for ax in fig:
+                AutoYrange(ax)
+
     @staticmethod
     def _linkaxes(link_list, all_ax_list):
+        # create list with the axis objects which should be connected
         ax_list = [all_ax_list[link[0]][link[1]] for link in link_list]
 
         # links all axes in ax_list
