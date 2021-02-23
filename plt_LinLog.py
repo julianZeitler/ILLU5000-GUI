@@ -1,9 +1,7 @@
-from plt_base import Base
+from plt_TwoD import TwoD
 
 
-class LinLog(Base):
-    def __init__(self,
-                 *args,
-                 **kwargs):
-
-        super().__init__(*args, **kwargs)
+class LinLog(TwoD):
+    @staticmethod
+    def plot_specific(ax):
+        ax.set_yscale('log')

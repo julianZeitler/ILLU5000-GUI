@@ -12,14 +12,6 @@ save writes the cl_data object to a dictionary, which can then be written to a m
 '''
 
 
-def inner_classes(obj):
-    """
-    :param obj: Class instance
-    :return: A list of class instances, that were instanciated by a class inside of the class obj originated from
-    """
-    return [cls_attribute for cls_attribute in obj.__dict__.values() if 'object' in str(cls_attribute)]
-
-
 def save(object, file: str = None, names=['PlotData']):
     """ Save is a recursive function, which goes over the hole data structure (cl_data)
         and converts it back to a dictionary
@@ -28,6 +20,13 @@ def save(object, file: str = None, names=['PlotData']):
     :param file: Default: None. If specified, save writes the dictionary to .mat file with the name specified in file
     :return: Returns a dictionary
     """
+
+    def _inner_classes(obj):
+        """
+        :param obj: Class instance
+        :return: A list of class instances, that were instantiated by a class inside of the class obj originated from
+        """
+        return [cls_attribute for cls_attribute in obj.__dict__.values() if 'object' in str(cls_attribute)]
 
     # Python passes arguments by assignment, so the original object would be changed
     instance = deepcopy(object)
@@ -40,20 +39,20 @@ def save(object, file: str = None, names=['PlotData']):
         # if the name of val is in names, following code gets executed:
         # val.__class__.__name__ returns the name of the class val was created from
         if str(val.__class__.__name__) in names:
-            names = inner_classes(val)
+            names = _inner_classes(val)
             dic[key] = save(val, names=names)
 
         # handle dictionaries
         elif isinstance(val, dict):
             for k, v in val.items():
-                names = inner_classes(v)
+                names = _inner_classes(v)
                 dic[key][k] = save(v, names=names)
 
         # handle lists
         elif isinstance(val, list):
             for i in range(len(val)):
                 try:
-                    names = inner_classes(val[i])
+                    names = _inner_classes(val[i])
                     val[i] = save(val[i], names=names)
                 except: pass
 
