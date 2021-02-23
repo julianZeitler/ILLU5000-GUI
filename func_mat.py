@@ -26,7 +26,7 @@ def save(object, file: str = None, names=['PlotData']):
         :param obj: Class instance
         :return: A list of class instances, that were instantiated by a class inside of the class obj originated from
         """
-        return [cls_attribute for cls_attribute in obj.__dict__.values() if 'object' in str(cls_attribute)]
+        return [cls_attribute for cls_attribute in obj.__dict__.values() if type(cls_attribute) == object]
 
     # Python passes arguments by assignment, so the original object would be changed
     instance = deepcopy(object)
@@ -54,7 +54,8 @@ def save(object, file: str = None, names=['PlotData']):
                 try:
                     names = _inner_classes(val[i])
                     val[i] = save(val[i], names=names)
-                except: pass
+                except AttributeError:
+                    pass
 
         elif is_dataclass(val):
             dic[key] = asdict(val)

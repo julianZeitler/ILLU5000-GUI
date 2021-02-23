@@ -1,7 +1,7 @@
 class Base:
     def __init__(self,
                  plots,
-                 title='',
+                 title=' ',
                  x_label='time',
                  y_label='Y-Axis',
                  legend='upper left',

@@ -1,14 +1,19 @@
 from matplotlib.pyplot import subplots
 
-from func_mat import load
+from func_mat import load, save
 from cl_data import Top
 from cl_zoom import AutoYrange
 
 
 class Plot:
-    def __init__(self, file, key):
-        self.read_data = load(file)
-        top = Top(**self.read_data)
+    def __init__(self, data, key):
+        if type(data) == str:
+            self.read_data = load(data)
+            top = Top(**self.read_data)
+        elif type(data) == object:
+            top = data
+        else:
+            raise TypeError('data was not of type string nor object')
 
         self.data = top.plot_data.data      # dictionary
         self.plot = top.plot_data.plot    # dictionary
