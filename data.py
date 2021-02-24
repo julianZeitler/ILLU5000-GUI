@@ -2,6 +2,8 @@ import numpy as np
 from scipy.io import savemat
 
 t_incremental = np.linspace(0.1, 20.1, 200)
+rad = np.linspace(0, 2, 200)
+theta = 2 * np.pi * rad
 
 raw_force = np.tan(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
 current = np.sqrt(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
@@ -10,6 +12,8 @@ raw_voltage = np.log(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 
 d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw Force', 'unit': 'N'},
                              'current': {'values': current, 'name': 'Current', 'unit': 'A'},
                              'raw_voltage': {'values': raw_voltage, 'name': 'Raw Voltage', 'unit': 'V'},
+                             'rad': {'values': rad, 'name': 'rad', 'unit': 'm'},
+                             'theta': {'values': theta, 'name': 'theta', 'unit': 'rad'},
                              't_incremental': {'values': t_incremental, 'name': 'Time incremental', 'unit': 's'}},
 
                     'meta': {'timestamp_last_sample': 12345.6789,
@@ -28,13 +32,18 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
 
                                                              {'plots': [['t_incremental', 'raw_voltage']]},
                                                              {'plots': [['t_incremental', 'raw_force']],
-                                                              'plot_type': 'LinLog'},
+                                                              'plot_type': 'LinLog',
+                                                              'grid': False},
                                                              {'plots': [['t_incremental', 'raw_voltage']]}]},
 
                                                 {'title': 'Title of fig2',
                                                  'subplot_rows': 2,
                                                  'subplot': [{'plots': [['t_incremental', 'raw_voltage']]},
-                                                             {'plots': [['t_incremental', 'current']]}]}],
+                                                             {'plots': [['t_incremental', 'current']]}]},
+
+                                                {'subplot': [{'plots': [['theta', 'rad']],
+                                                              'plot_type': 'Polar',
+                                                              'title': 'example polar plot'}]}],
                                      'linkaxes': [[0, 0], [0, 1], [1, 0]]}}}}
 
 
