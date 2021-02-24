@@ -7,6 +7,7 @@ class Base:
                  legend='upper left',
                  share_x='',
                  share_y='',
+                 grid=True,
                  plot_type='LinLin'):
 
         self.plots = plots
@@ -16,4 +17,5 @@ class Base:
         self.legend = legend
         self.share_x = share_x
         self.share_y = share_y
+        self.grid = grid
         self.plot_type = plot_type

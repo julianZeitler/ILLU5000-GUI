@@ -1,4 +1,5 @@
 from matplotlib.pyplot import subplots
+from numpy import ndarray
 
 from func_mat import load, save
 from cl_data import Top
@@ -43,7 +44,9 @@ class Plot:
                             constrained_layout=fig_config.constrained_layout)
 
         # convert multi-dim numpy array to single-dim python list
-        if axs.ndim == 1:
+        if not isinstance(axs, ndarray):
+            axs = [axs]
+        elif axs.ndim == 1:
             axs = list(axs)
         elif axs.ndim == 2:
             axs = [ax for dim in axs for ax in dim]
