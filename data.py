@@ -48,10 +48,18 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                               'plot_type': 'Polar',
                                                               'title': 'example polar plot'}]},
 
-                                                {'subplot': [{'plots': ['hist'],
+                                                {'subplot_cols': 2,
+                                                 'subplot': [{'plots': ['hist'],
                                                               'plot_type': 'Hist',
                                                               'title': 'example for histogram',
-                                                              'bins': 50}]}],
+                                                              'bins': 20,
+                                                              'x_label': 'IQ'},
+
+                                                             {'plots': ['hist'],
+                                                              'plot_type': 'Hist',
+                                                              'title': 'example for second histogram',
+                                                              'bins': 50,
+                                                              'x_label': 'IQ'}]}],
                                      'linkaxes': [[0, 0], [0, 1], [1, 0]]}}}}
 
 

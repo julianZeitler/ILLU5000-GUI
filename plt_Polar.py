@@ -1,7 +1,7 @@
 from matplotlib.pyplot import subplot
 from numpy import asarray
 
-from plt_base import Base
+from plt_Base import Base
 
 
 class Polar(Base):
