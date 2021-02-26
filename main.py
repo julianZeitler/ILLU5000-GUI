@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from cl_plot import Plot
 from data import data_mat
 
-
+# argpass
 # get arguments
 # args[0] is the file itself
 # args = argv

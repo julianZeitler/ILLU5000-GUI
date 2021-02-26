@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from func_import import dyn_import_cls
 
 
+# umbenennen DataFile
 class Top:
     def __init__(self, __header__: bytes, __version__: str, __globals__: list, plot_data):
         """

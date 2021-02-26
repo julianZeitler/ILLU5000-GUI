@@ -33,16 +33,17 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                               'title': 'subplot 1',
                                                               'legend': 'lower left'},
 
-                                                             {'plots': [['t_incremental', 'raw_voltage']]},
+                                                             {'plots': [['t_incremental', 'raw_voltage']],
+                                                              'plot_type': 'LinLog'},
                                                              {'plots': [['t_incremental', 'raw_force']],
-                                                              'plot_type': 'LinLog',
                                                               'grid': False},
                                                              {'plots': [['t_incremental', 'raw_voltage']]}]},
 
                                                 {'title': 'Title of fig2',
                                                  'subplot_rows': 2,
                                                  'subplot': [{'plots': [['t_incremental', 'raw_voltage']]},
-                                                             {'plots': [['t_incremental', 'current']]}]},
+                                                             {'plots': [['t_incremental', 'current']],
+                                                              'regression': 'Root'}]},
 
                                                 {'subplot': [{'plots': [['theta', 'rad']],
                                                               'plot_type': 'Polar',
@@ -60,7 +61,7 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                               'title': 'example for second histogram',
                                                               'bins': 50,
                                                               'x_label': 'IQ'}]}],
-                                     'linkaxes': [[0, 0], [0, 1], [1, 0]]}}}}
+                                     'linkaxes': [[0, 0], [0, 2], [1, 0]]}}}}
 
 
 def data_mat():

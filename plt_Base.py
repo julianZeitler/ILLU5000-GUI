@@ -8,7 +8,8 @@ class Base:
                  share_x='',
                  share_y='',
                  grid=True,
-                 plot_type='LinLin'):
+                 plot_type='LinLin',
+                 regression=''):
 
         self.plots = plots
         self.title = title
@@ -19,3 +20,4 @@ class Base:
         self.share_y = share_y
         self.grid = grid
         self.plot_type = plot_type
+        self.regression = regression
