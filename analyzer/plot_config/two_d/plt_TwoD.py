@@ -1,6 +1,6 @@
 from numpy import asarray
 
-from plt_Base import Base
+from analyzer.plot_config.plt_Base import Base
 
 
 class TwoD (Base):

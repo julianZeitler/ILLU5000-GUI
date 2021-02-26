@@ -1,7 +1,7 @@
 from matplotlib.pyplot import gca
 
 
-class AutoYrange:
+class Zoom:
     def __init__(self, ax):
         # create callback for ax on event xlim_changed
         self.cid = ax.callbacks.connect('xlim_changed', self)

@@ -1,4 +1,4 @@
-from plt_TwoD import TwoD
+from analyzer.plot_config.two_d.plt_TwoD import TwoD
 
 
 class LinLog(TwoD):
