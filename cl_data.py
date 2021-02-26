@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from func_import import dyn_import_cls
 
 
-class Top:
+class FileData:
     def __init__(self, __header__: bytes, __version__: str, __globals__: list, plot_data):
         """
         :param __header__: Matlab specific header
@@ -88,10 +88,8 @@ class Top:
                     self.subplot = []
                     for plot in subplot:
                         try:
-                            """
-                            try to import the class of the plot_type,
-                            if none is specified LinLin gets imported as default
-                            """
+                            # try to import the class of the plot_type,
+                            # if none is specified LinLin gets imported as default
                             cls = dyn_import_cls('plt_' + plot['plot_type'], plot['plot_type'])
 
                         except KeyError:

@@ -28,7 +28,7 @@ def save(object, file: str = None, names=['PlotData']):
         """
         return [cls_attribute for cls_attribute in obj.__dict__.values() if type(cls_attribute) == object]
 
-    # Python passes arguments by assignment, so the original object would be changed
+    # Python passes arguments by value, so the original object would be changed
     instance = deepcopy(object)
 
     # vars() returns __dict__ attribute of an object
