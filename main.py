@@ -2,8 +2,8 @@
 from sys import argv
 import matplotlib.pyplot as plt
 
-from cl_plot import Plot
-from data import data_mat
+from analyzer.data.data import data_mat
+from analyzer.plot.cl_plot import Plot
 
 # argpass
 # get arguments

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 # function to dynamically import classes
-from func_import import dyn_import_cls
+from analyzer.functions.func_import import dyn_import_cls
 
 
 class FileData:
@@ -90,10 +90,11 @@ class FileData:
                         try:
                             # try to import the class of the plot_type,
                             # if none is specified LinLin gets imported as default
-                            cls = dyn_import_cls('plt_' + plot['plot_type'], plot['plot_type'])
+                            cls = dyn_import_cls('analyzer.plot_config.plot_types.plt_' + plot['plot_type'],
+                                                 plot['plot_type'])
 
                         except KeyError:
-                            cls = dyn_import_cls('plt_LinLin', 'LinLin')
+                            cls = dyn_import_cls('analyzer.plot_config.plot_types.plt_LinLin', 'LinLin')
 
                         # append and create the subplot objects
                         self.subplot.append(cls(**plot))
