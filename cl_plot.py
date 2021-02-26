@@ -1,8 +1,9 @@
 from matplotlib.pyplot import subplots
 from numpy import ndarray
+from dataclasses import dataclass
 
 from func_mat import load, save
-from cl_data import Top
+from cl_data import FileData
 from cl_zoom import AutoYrange
 
 
@@ -10,21 +11,22 @@ class Plot:
     def __init__(self, data, key):
         if type(data) == str:
             self.read_data = load(data)
-            top = Top(**self.read_data)
+            file_data = FileData(**self.read_data)
         elif type(data) == object:
-            top = data
+            file_data = data
         else:
-            raise TypeError('data was not of type string nor object')
+            raise TypeError('data was not of type string or object')
 
-        self.data = top.plot_data.data      # dictionary
-        self.plot = top.plot_data.plot    # dictionary
-        self.meta = top.plot_data.meta      # object
+        self.data = file_data.plot_data.data      # dictionary
+        self.plot = file_data.plot_data.plot    # dictionary
+        self.meta = file_data.plot_data.meta      # object
 
-        # self.axes is a 2D list with the first dimension as the figures and the second as axes objects
-        self.axes = [self._create_figures(fig, self.data) for fig in self.plot[key].figure]
+        # create list of figures, which can be accessed via
+        # self.figure[i].subplot[i]
+        self.figure = [self.Subplot(self._create_figures(fig, self.data)) for fig in self.plot[key].figure]
 
         # self.ax_list contains the ax objects for every subplot that is linked
-        self.ax_list = [self.axes[link[0]][link[1]] for link in self.plot[key].linkaxes]
+        self.ax_list = [self.figure[link[0]].subplot[link[1]] for link in self.plot[key].linkaxes]
 
         self._linkaxes()
         self._auto_zoom()
@@ -55,3 +57,7 @@ class Plot:
             fig_config.subplot[axs.index(ax)].plot(ax, data)
 
         return axs
+
+    @dataclass
+    class Subplot:
+        subplot: list
