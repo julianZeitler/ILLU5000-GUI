@@ -2,9 +2,9 @@ from matplotlib.pyplot import subplots
 from numpy import ndarray
 from dataclasses import dataclass
 
-from func_mat import load, save
-from cl_data import FileData
-from cl_zoom import AutoYrange
+from analyzer.functions.func_mat import load, save
+from analyzer.data.cl_data import FileData
+from analyzer.plot.cl_zoom import Zoom
 
 
 class Plot:
@@ -37,7 +37,7 @@ class Plot:
 
     def _auto_zoom(self):
         for ax in self.ax_list:
-            AutoYrange(ax)
+            Zoom(ax)
 
     @staticmethod
     def _create_figures(fig_config, data):
