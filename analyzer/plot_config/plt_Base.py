@@ -1,4 +1,11 @@
 class Base:
+    """
+    The Base module is the parent class of all plot_types that are specified in plot_types module.
+    This class defines the init method, the most basic configuration can be stored here.
+    For basic 2-dimensional plots, the plot method is specified in two_d.plot_TwoD.TwoD.plot().
+    For further specification, plot() calls (if it exists) the plot_specific method, which can be defined in every plot
+    type.
+    """
     def __init__(self,
                  plots,
                  title=' ',
