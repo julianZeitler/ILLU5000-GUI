@@ -13,12 +13,13 @@ save writes the cl_data object to a dictionary, which can then be written to a m
 
 
 def save(object, file: str = None, names=['PlotData']):
-    """ Save is a recursive function, which goes over the hole data structure (cl_data)
-        and converts it back to a dictionary
+    """
+    Save is a recursive function, which goes over the hole data structure (cl_data)
+    and converts it back to a dictionary.
     :param object: The object, which should be converted
     :param names: [typically: 'PlotData'] The names of the inner classes, required for the next recursion step
     :param file: Default: None. If specified, save writes the dictionary to .mat file with the name specified in file
-    :return: Returns a dictionary
+    :return: a dictionary
     """
 
     def _inner_classes(obj):
@@ -67,8 +68,8 @@ def save(object, file: str = None, names=['PlotData']):
 
 def load(filename):
     """
-    source https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries
-    this function should be called instead of direct scipy.io.loadmat
+    Source: https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries.
+    This function should be called instead of direct scipy.io.loadmat
     as it cures the problem of not properly recovering python dictionaries
     from mat files. It calls the function check keys to cure all entries
     which are still mat-objects

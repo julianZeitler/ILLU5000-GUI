@@ -2,6 +2,9 @@ from matplotlib.pyplot import gca
 
 
 class Zoom:
+    """
+    Zoom implements a functionality for automatically altering the y-Limits of the linked subplots.
+    """
     def __init__(self, ax):
         # create callback for ax on event xlim_changed
         self.cid = ax.callbacks.connect('xlim_changed', self)

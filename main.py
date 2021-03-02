@@ -11,8 +11,8 @@ def main():
     parser.add_argument('file', help='The data file from witch the information should be taken.', type=str)
     parser.add_argument('key', help='Key for specifying plot type.', type=str)
     parser.add_argument('-c', '--create', help='Generate .mat file from python dict in data package.',
-                        action='create_true')
-    parser.add_argument('-t', '--test', help='Supress display output for testing purposes.', action='test_true')
+                        action='store_true')
+    parser.add_argument('-t', '--test', help='Supress display output for testing purposes.', action='store_true')
 
     args = parser.parse_args()
 

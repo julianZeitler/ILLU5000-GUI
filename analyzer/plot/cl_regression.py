@@ -2,6 +2,10 @@ from numpy import asarray, sqrt, log, exp
 
 
 class Regression:
+    """
+    This module can be used to add trendlines to the plots.
+    The specific regression types inherit from this class
+    """
     def __init__(self, ax):
         self.ax = ax
 

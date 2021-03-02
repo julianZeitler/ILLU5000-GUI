@@ -8,6 +8,12 @@ from analyzer.plot.cl_zoom import Zoom
 
 
 class Plot:
+    """
+    Plot is responsible for building the plot from the data inside of a FileData object.
+    Therefore it receives the arguments data and key upon instantiation. Data can either be the name of a .mat file
+    or an already created instance of FileData. Key is the name of the plot that should be plotted.
+    The created axes objects can be accessed via plot.figure[..].subplot[...]
+    """
     def __init__(self, data, key):
         if type(data) == str:
             self.read_data = load(data)
@@ -41,6 +47,12 @@ class Plot:
 
     @staticmethod
     def _create_figures(fig_config, data):
+        """
+        _create_figures is a private method, which -as the name suggests- creates the figure instances.
+        :param fig_config: figure configuration stored in file_data.plot_data.plot[...].figure[...]
+        :param data: the actual plotting data
+        :return: a list of axes objects
+        """
         fig, axs = subplots(ncols=fig_config.subplot_cols,
                             nrows=fig_config.subplot_rows,
                             constrained_layout=fig_config.constrained_layout)

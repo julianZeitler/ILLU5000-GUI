@@ -5,6 +5,13 @@ from analyzer.functions.func_import import dyn_import_cls
 
 
 class FileData:
+    """
+    FileData is the top-level class for storing the in the mat file specified config and data in a hierarchical
+    structure.
+    Because it is used for data storing purposes, it only contains variables and not methods. Matlab data files always
+    contain the variables __header__, __version__ and __globals__. When importing into Matlab only the struct plot_data
+    is visible. That is why FileData acts as a toplevel class, whose objects only contains plot_data.
+    """
     def __init__(self, __header__: bytes, __version__: str, __globals__: list, plot_data):
         """
         :param __header__: Matlab specific header
@@ -21,7 +28,8 @@ class FileData:
 
     class PlotData:
         """
-        PlotData class receives and stores data, plot and meta
+        PlotData is the class in whose objects the actual plotting data is stored in. On initialization, data, plot and
+        meta are passed. When coming from the load function, these attributes are dictionaries.
         """
         def __init__(self, data, plot, meta):
             """
@@ -53,8 +61,14 @@ class FileData:
             worker: str
 
         class Figure:
+            """
+            The amount of figures can vary.
+            The figure configuration can be accessed with plot_data.plot[...].figure[n]
+            """
             def __init__(self, figure):
-                # figure is a dictionary with the figure config as its value
+                """
+                :param figure: a dictionary with the figure config as its value
+                """
                 self.figure = []
                 for key, val in figure.items():
                     if key == 'figure':
@@ -66,7 +80,10 @@ class FileData:
                         self.linkaxes = val
 
             class FigConfig:
-                # Inside the figure configuration is also the subplot config
+                """
+                FigConfig contains the actual figure configuration as well as the subplot configuration, which can be
+                altered for every plot type by adding classes to the plot_types package
+                """
                 def __init__(self,
                              subplot,
                              title: str = ' ',
