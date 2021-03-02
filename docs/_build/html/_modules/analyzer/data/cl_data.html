@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>analyzer.data.cl_data &mdash; ILLU5000-GUI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> ILLU5000-GUI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">ILLU5000-GUI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">ILLU5000-GUI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>analyzer.data.cl_data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for analyzer.data.cl_data</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">dataclass</span>
+
+<span class="c1"># function to dynamically import classes</span>
+<span class="kn">from</span> <span class="nn">analyzer.functions.func_import</span> <span class="k">import</span> <span class="n">dyn_import_cls</span>
+
+
+<div class="viewcode-block" id="FileData"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData">[docs]</a><span class="k">class</span> <span class="nc">FileData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    FileData is the top-level class for storing the in the mat file specified config and data in a hierarchical</span>
+<span class="sd">    structure.</span>
+<span class="sd">    Because it is used for data storing purposes, it only contains variables and not methods. Matlab data files always</span>
+<span class="sd">    contain the variables __header__, __version__ and __globals__. When importing into Matlab only the struct plot_data</span>
+<span class="sd">    is visible. That is why FileData acts as a toplevel class, whose objects only contains plot_data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__header__</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">__version__</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="vm">__globals__</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">plot_data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param __header__: Matlab specific header</span>
+<span class="sd">        :param __version__: Matlab version</span>
+<span class="sd">        :param __globals__: Matlab globals</span>
+<span class="sd">        :param plot_data: Data for creating the plots</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__header__</span> <span class="o">=</span> <span class="n">__header__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__version__</span> <span class="o">=</span> <span class="n">__version__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__globals__</span> <span class="o">=</span> <span class="vm">__globals__</span>
+
+        <span class="c1"># map the trace dictionary on the Trace class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PlotData</span><span class="p">(</span><span class="o">**</span><span class="n">plot_data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FileData.PlotData"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData">[docs]</a>    <span class="k">class</span> <span class="nc">PlotData</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        PlotData is the class in whose objects the actual plotting data is stored in. On initialization, data, plot and</span>
+<span class="sd">        meta are passed. When coming from the load function, these attributes are dictionaries.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            :param data: data contains the actual plot data</span>
+<span class="sd">            :param plot: plot contains the configuration of the plots</span>
+<span class="sd">            :param meta: meta contains meta information about the recorded data</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c1"># data/plot are dictionaries containing another dictionary</span>
+            <span class="c1"># class Data receives the complete value of data via dictionary unpacking</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Data</span><span class="p">(</span><span class="o">**</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+            <span class="c1"># Figure receives the values of plot</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">plot</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+            <span class="c1"># again, Meta gets the values of meta via dictionary unpacking</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Meta</span><span class="p">(</span><span class="o">**</span><span class="n">meta</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FileData.PlotData.Data"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Data">[docs]</a>        <span class="nd">@dataclass</span>
+        <span class="k">class</span> <span class="nc">Data</span><span class="p">:</span>
+            <span class="n">values</span><span class="p">:</span> <span class="nb">list</span>
+            <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+            <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="FileData.PlotData.Meta"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Meta">[docs]</a>        <span class="nd">@dataclass</span>
+        <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+            <span class="n">timestamp_last_sample</span><span class="p">:</span> <span class="nb">float</span>
+            <span class="n">location</span><span class="p">:</span> <span class="nb">str</span>
+            <span class="n">machine</span><span class="p">:</span> <span class="nb">str</span>
+            <span class="n">worker</span><span class="p">:</span> <span class="nb">str</span></div>
+
+<div class="viewcode-block" id="FileData.PlotData.Figure"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Figure">[docs]</a>        <span class="k">class</span> <span class="nc">Figure</span><span class="p">:</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            The amount of figures can vary.</span>
+<span class="sd">            The figure configuration can be accessed with plot_data.plot[...].figure[n]</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figure</span><span class="p">):</span>
+                <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                :param figure: a dictionary with the figure config as its value</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">figure</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;figure&#39;</span><span class="p">:</span>
+                        <span class="c1"># the configuration is a list</span>
+                        <span class="k">for</span> <span class="n">fig</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
+                            <span class="c1"># the config of every figure is passed to FigConfig</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FigConfig</span><span class="p">(</span><span class="o">**</span><span class="n">fig</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;linkaxes&#39;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">linkaxes</span> <span class="o">=</span> <span class="n">val</span>
+
+<div class="viewcode-block" id="FileData.PlotData.Figure.FigConfig"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Figure.FigConfig">[docs]</a>            <span class="k">class</span> <span class="nc">FigConfig</span><span class="p">:</span>
+                <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                FigConfig contains the actual figure configuration as well as the subplot configuration, which can be</span>
+<span class="sd">                altered for every plot type by adding classes to the plot_types package</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                             <span class="n">subplot</span><span class="p">,</span>
+                             <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+                             <span class="n">subplot_rows</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                             <span class="n">subplot_cols</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                             <span class="n">constrained_layout</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+                             <span class="p">):</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">subplot_rows</span> <span class="o">=</span> <span class="n">subplot_rows</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">subplot_cols</span> <span class="o">=</span> <span class="n">subplot_cols</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">constrained_layout</span> <span class="o">=</span> <span class="n">constrained_layout</span>
+
+                    <span class="c1"># If subplot only contains one element, the parenthesis get removed so they get added manually</span>
+                    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">subplot</span><span class="p">)</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">:</span>
+                        <span class="n">subplot</span> <span class="o">=</span> <span class="p">[</span><span class="n">subplot</span><span class="p">]</span>
+
+                    <span class="c1"># the subplots are stored in self.subplot</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">subplot</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">subplot</span><span class="p">:</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="c1"># try to import the class of the plot_type,</span>
+                            <span class="c1"># if none is specified LinLin gets imported as default</span>
+                            <span class="bp">cls</span> <span class="o">=</span> <span class="n">dyn_import_cls</span><span class="p">(</span><span class="s1">&#39;analyzer.plot_config.plot_types.plt_&#39;</span> <span class="o">+</span> <span class="n">plot</span><span class="p">[</span><span class="s1">&#39;plot_type&#39;</span><span class="p">],</span>
+                                                 <span class="n">plot</span><span class="p">[</span><span class="s1">&#39;plot_type&#39;</span><span class="p">])</span>
+
+                        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                            <span class="bp">cls</span> <span class="o">=</span> <span class="n">dyn_import_cls</span><span class="p">(</span><span class="s1">&#39;analyzer.plot_config.plot_types.plt_LinLin&#39;</span><span class="p">,</span> <span class="s1">&#39;LinLin&#39;</span><span class="p">)</span>
+
+                        <span class="c1"># append and create the subplot objects</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">subplot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">plot</span><span class="p">))</span></div></div></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Julian Zeitler
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
