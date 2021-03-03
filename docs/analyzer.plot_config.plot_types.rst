@@ -11,7 +11,6 @@ analyzer.plot\_config.plot\_types.plt\_Hist module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 analyzer.plot\_config.plot\_types.plt\_LinLin module
 ----------------------------------------------------
