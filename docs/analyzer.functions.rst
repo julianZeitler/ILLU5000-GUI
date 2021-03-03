@@ -11,6 +11,7 @@ analyzer.functions.func\_import module
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:
 
 analyzer.functions.func\_mat module
 -----------------------------------
@@ -19,6 +20,7 @@ analyzer.functions.func\_mat module
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:
 
 
 Module contents
@@ -28,3 +30,4 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:

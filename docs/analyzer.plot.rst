@@ -11,6 +11,7 @@ analyzer.plot.cl\_plot module
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:
 
 analyzer.plot.cl\_regression module
 -----------------------------------
@@ -19,6 +20,7 @@ analyzer.plot.cl\_regression module
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:
 
 analyzer.plot.cl\_zoom module
 -----------------------------
@@ -27,6 +29,7 @@ analyzer.plot.cl\_zoom module
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:
 
 
 Module contents
@@ -36,3 +39,4 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    :special-members:
