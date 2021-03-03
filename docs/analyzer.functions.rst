@@ -26,3 +26,4 @@ Module contents
 .. automodule:: analyzer.functions
     :members:
     :undoc-members:
+    :private-members:

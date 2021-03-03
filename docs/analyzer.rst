@@ -17,3 +17,4 @@ Module contents
 .. automodule:: analyzer
     :members:
     :undoc-members:
+    :private-members:

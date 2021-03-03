@@ -13,14 +13,14 @@ from scipy.io.matlab.mio5_params import mat_struct
 
 def save(object, file: str = None, names=['PlotData']):
     """
-    Save is a recursive function, which goes over the hole data structure (`cl_data`)
+    `save` is a recursive function which goes over the hole data structure (`cl_data`)
     and converts it back to a dictionary.
 
     :param object: The object, which should be converted
     :type object: object
-    :param names: [typically: 'PlotData'] The names of the inner classes, required for the next recursion step
+    :param names: [typically: 'PlotData'] The names of the inner classes required for the next recursion step
     :type names: [str, str, ...]
-    :param file: Default: None. If specified, save writes the dictionary to .mat file with the name specified in file
+    :param file: Default: None. If specified, `save` writes the dictionary to .mat file with the name specified in file
     :type file: str
     :return: a dictionary
     :rtype: dict
@@ -38,13 +38,13 @@ def save(object, file: str = None, names=['PlotData']):
     # Python passes arguments by value, so the original object would be changed
     instance = deepcopy(object)
 
-    # vars() returns __dict__ attribute of an object
+    # `vars()` returns `__dict__` attribute of an object
     # --> extracts the objects variables as a dictionary
     dic = vars(instance)
 
     for key, val in dic.items():
         # if the name of val is in names, following code gets executed:
-        # val.__class__.__name__ returns the name of the class val was created from
+        # `val.__class__.__name__` returns the name of the class val was created from
         if str(val.__class__.__name__) in names:
             names = _inner_classes(val)
             dic[key] = save(val, names=names)
@@ -75,7 +75,7 @@ def save(object, file: str = None, names=['PlotData']):
 def load(filename):
     """
     Source: https://stackoverflow.com/questions/7008608/scipy-io-loadmat-nested-structures-i-e-dictionaries.
-    This function should be called instead of direct scipy.io.loadmat
+    This function should be called instead of direct `scipy.io.loadmat`
     as it cures the problem of not properly recovering python dictionaries
     from mat files. It calls the function check keys to cure all entries
     which are still mat-objects

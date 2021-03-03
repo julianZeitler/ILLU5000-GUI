@@ -34,3 +34,4 @@ Module contents
 .. automodule:: analyzer.plot
     :members:
     :undoc-members:
+    :private-members:
