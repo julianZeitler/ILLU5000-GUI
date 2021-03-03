@@ -2,7 +2,7 @@
 from argparse import ArgumentParser
 from matplotlib.pyplot import show
 
-from analyzer.data.data import data_mat
+from analyzer.data.data import save_mat
 from analyzer.plot.cl_plot import Plot
 
 
@@ -22,7 +22,7 @@ def main():
         show()
 
     if args.create:
-        data_mat()
+        save_mat('data.mat')
 
 
 if __name__ == '__main__':
