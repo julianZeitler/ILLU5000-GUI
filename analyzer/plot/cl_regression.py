@@ -49,7 +49,9 @@ class Linear(Regression):
 
 class Exponential(Regression):
     """Create an exponential regression
-    .. todo:: currently only two parameters are calculated of the form y = a(e^bx)
+
+    .. todo::
+        currently only two parameters are calculated of the form y = a(e^bx)
         add a third parameter c : y = a(e^bx) + c
     """
     def fit(self):

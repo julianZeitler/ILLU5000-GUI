@@ -1,5 +1,7 @@
 """This module is used to automatically adjust the y-limits upon zoom
-.. todo:: currently the x- and y-data is read from the axes objects every time the limits are changed.
+
+.. todo::
+    currently the x- and y-data is read from the axes objects every time the limits are changed.
     It would be sufficient to read them only once upon creation.
 """
 
