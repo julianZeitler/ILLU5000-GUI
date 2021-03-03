@@ -8,7 +8,13 @@ class Hist(Base):
                  bins,
                  *args,
                  **kwargs):
+        """`bins` is specific for `Hist`. `args` and `kwargs` are defined in the `__init__` of `plt_Base`
 
+        :param bins: number of 'steps'
+        :type bins: int
+        :param args: standard conf
+        :param kwargs: standard conf
+        """
         self.bins = bins
         super().__init__(*args, **kwargs)
 

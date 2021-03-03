@@ -35,7 +35,6 @@ class Base:
         :type plot_type: str
         :param regression: optionally add regression type
         :type regression: str
-
         """
 
         self.plots = plots
