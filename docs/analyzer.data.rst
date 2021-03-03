@@ -11,7 +11,6 @@ analyzer.data.cl\_data module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 analyzer.data.data module
 -------------------------
@@ -20,7 +19,6 @@ analyzer.data.data module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 
 Module contents
@@ -30,4 +28,3 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:

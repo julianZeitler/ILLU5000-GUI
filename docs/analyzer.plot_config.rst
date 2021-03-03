@@ -19,7 +19,6 @@ analyzer.plot\_config.plt\_Base module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 
 Module contents
@@ -29,4 +28,3 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:

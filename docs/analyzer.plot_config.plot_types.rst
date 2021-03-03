@@ -20,7 +20,6 @@ analyzer.plot\_config.plot\_types.plt\_LinLin module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 analyzer.plot\_config.plot\_types.plt\_LinLog module
 ----------------------------------------------------
@@ -29,7 +28,6 @@ analyzer.plot\_config.plot\_types.plt\_LinLog module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 analyzer.plot\_config.plot\_types.plt\_Polar module
 ---------------------------------------------------
@@ -38,7 +36,6 @@ analyzer.plot\_config.plot\_types.plt\_Polar module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 
 Module contents
@@ -48,4 +45,3 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:

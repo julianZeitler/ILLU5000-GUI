@@ -11,7 +11,6 @@ analyzer.plot\_config.two\_d.plt\_TwoD module
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
 
 
 Module contents
@@ -21,4 +20,3 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
-    :special-members:
