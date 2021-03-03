@@ -1,12 +1,15 @@
+"""This module can be used to add trendlines to the plots."""
+
 from numpy import asarray, sqrt, log, exp
 
 
 class Regression:
-    """
-    This module can be used to add trendlines to the plots.
-    The specific regression types inherit from this class
-    """
+    """The specific regression types inherit from this class."""
     def __init__(self, ax):
+        """Read the data from the axes and calculate the sums of x- and y-data
+        :param ax: axis object
+        :type ax: object
+        """
         self.ax = ax
 
         self.lines = ax.lines[:]
@@ -20,7 +23,9 @@ class Regression:
 
 
 class Linear(Regression):
+    """Create a linear regression"""
     def fit(self):
+        """Calculate the parameters with the method of smallest error squares"""
         sum_x2 = 0
         for x in self.x_data:
             sum_x2 = sum_x2 + x * x
@@ -43,7 +48,13 @@ class Linear(Regression):
 
 
 class Exponential(Regression):
+    """Create an exponential regression
+    .. todo::
+       currently only two parameters are calculated of the form y = a(e^bx)
+       add a third parameter c : y = a(e^bx) + c
+    """
     def fit(self):
+        """Calculate the parameters with the method of smallest error squares"""
         sum_x2 = 0
         for x in self.x_data:
             sum_x2 = sum_x2 + x * x
@@ -61,7 +72,9 @@ class Exponential(Regression):
 
 
 class Root(Regression):
+    """Create a square root regression"""
     def fit(self):
+        """Calculate the parameters with the method of smallest error squares"""
         sum_sx = 0
         for x in self.x_data:
             sum_sx = sum_sx + sqrt(x)
