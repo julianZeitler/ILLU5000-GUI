@@ -14,7 +14,6 @@ def dyn_import_cls(module_name, class_name):
     :param class_name: name of the class
     :type class_name: str
     :return: class
-    :rtype: class
 
     .. note::
        This function returns a class

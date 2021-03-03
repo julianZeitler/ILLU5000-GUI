@@ -39,22 +39,25 @@ class FileData:
         self.plot_data = self.PlotData(**plot_data)
 
     class PlotData:
-        """ `PlotData` only defines the `__init__` method, to store data. There the members `self.data`, `self.plot`
+        """ `PlotData` only defines the `__init__` method to store data, where the members `self.data`, `self.plot`
         and `self.meta` are declared.
         """
         def __init__(self, data, plot, meta):
             """ `self.data`'s keys are assigned dynamically, so the variable `self.data` is a dictionary itself, that
             can be accessed with the keywords defined previously.
+
             :param data: data contains the actual plot data
             :type data: dict
 
             The same is true for `self.plot`, where different plot types can be defined. The dict's values are defined
             as objects of the Figure class which then contains a list of all figure configuration.
+
             :param plot: plot contains the configuration of the plots
             :type plot: dict
 
             `self.meta` contains meta information like the time when the trace has been recorded. `self.meta` gets
             assigned to an object of the `Meta` dataclass.
+
             :param meta: meta contains meta information about the recorded data
             :type meta: dict
             """
@@ -86,10 +89,11 @@ class FileData:
         class Figure:
             """
             `Figure` defines the `__init__` method, as well as the `FigConfig` class.
-            The figure configuration can be accessed with plot_data.plot[...].figure[n]
+            The figure configuration can be accessed with **plot_data.plot[...].figure[n]**
             """
             def __init__(self, figure):
                 """The amount of figures can vary, therefore `self.figure` gets assigned as a list.
+
                 :param figure: a dictionary with the figure config as its value
                 """
                 self.figure = []
@@ -115,13 +119,26 @@ class FileData:
                 """
                 def __init__(self,
                              subplot,
-                             title: str = ' ',
                              subplot_rows: int = 1,
                              subplot_cols: int = 1,
                              constrained_layout: bool = True
                              ):
+                    """
+                    .. note::
+                       individual subplots configs are saved dynamically to plot type classes!
 
-                    self.title = title
+                    `__init__` defines the figure configuration:
+
+                    :param subplot: list of subplot configs
+                    :type subplot: list
+                    :param subplot_rows: number of subplots in y-dimension
+                    :type subplot_rows: int
+                    :param subplot_cols: number of subplots in x-dimension
+                    :type subplot_cols: int
+                    :param constrained_layout: automatic, ideal space organization
+                    :type constrained_layout: bool
+                    """
+
                     self.subplot_rows = subplot_rows
                     self.subplot_cols = subplot_cols
                     self.constrained_layout = constrained_layout

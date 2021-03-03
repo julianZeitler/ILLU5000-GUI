@@ -30,7 +30,7 @@ class Base:
         :type legend: str
         :param grid: toggle grid
         :type grid: bool
-        :param plot_type: name of class from which `plot()` should be inherited
+        :param plot_type: name of class `plot()` should be inherited from
             (it is sufficient to write the name without *plt_*)
         :type plot_type: str
         :param regression: optionally add regression type
