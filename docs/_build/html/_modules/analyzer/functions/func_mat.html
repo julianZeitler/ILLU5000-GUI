@@ -144,32 +144,38 @@
            <div itemprop="articleBody">
             
   <h1>Source code for analyzer.functions.func_mat</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">is_dataclass</span><span class="p">,</span> <span class="n">asdict</span>
+<span></span><span class="sd">&quot;&quot;&quot;func_mat.py contains the function load and save.</span>
+<span class="sd">load loads a matlab file and outputs structs as a python dictionary and vectors as python lists</span>
+<span class="sd">save writes the cl_data object to a dictionary, which can then be written to a matlab file</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">is_dataclass</span><span class="p">,</span> <span class="n">asdict</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
 
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">ndarray</span>
 <span class="kn">from</span> <span class="nn">scipy.io</span> <span class="k">import</span> <span class="n">loadmat</span><span class="p">,</span> <span class="n">savemat</span>
 <span class="kn">from</span> <span class="nn">scipy.io.matlab.mio5_params</span> <span class="k">import</span> <span class="n">mat_struct</span>
 
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">func_mat.py contains the function load and save.</span>
-<span class="sd">load loads a matlab file and outputs structs as a python dictionary and vectors as python lists</span>
-<span class="sd">save writes the cl_data object to a dictionary, which can then be written to a matlab file</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
 
 <div class="viewcode-block" id="save"><a class="viewcode-back" href="../../../analyzer.functions.html#analyzer.functions.func_mat.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PlotData&#39;</span><span class="p">]):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Save is a recursive function, which goes over the hole data structure (cl_data)</span>
 <span class="sd">    and converts it back to a dictionary.</span>
+
 <span class="sd">    :param object: The object, which should be converted</span>
+<span class="sd">    :type object: object</span>
 <span class="sd">    :param names: [typically: &#39;PlotData&#39;] The names of the inner classes, required for the next recursion step</span>
+<span class="sd">    :type names: [str, str, ...]</span>
 <span class="sd">    :param file: Default: None. If specified, save writes the dictionary to .mat file with the name specified in file</span>
+<span class="sd">    :type file: str</span>
 <span class="sd">    :return: a dictionary</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_inner_classes</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Like the name suggests, this function gets the inner classes of an</span>
+<span class="sd">        object and returns their objects as a list.</span>
+
 <span class="sd">        :param obj: Class instance</span>
 <span class="sd">        :return: A list of class instances, that were instantiated by a class inside of the class obj originated from</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -221,20 +227,23 @@
 <span class="sd">    which are still mat-objects</span>
 
 <span class="sd">    :param filename: Name of matlab file</span>
+<span class="sd">    :type filename: str</span>
 <span class="sd">    :return: Dictionary of the matlab data structure</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">struct_as_record</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">squeeze_me</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_check_keys</span><span class="p">(</span><span class="n">dic</span><span class="p">):</span>
-        <span class="c1"># checks if entries in dictionary are mat-objects. If yes</span>
-        <span class="c1"># todict is called to change them to nested dictionaries</span>
+        <span class="sd">&quot;&quot;&quot;checks if entries in dictionary are mat-objects. If yes</span>
+<span class="sd">        `_todict` is called to change them to nested dictionaries.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dic</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">mat_struct</span><span class="p">):</span>
                 <span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_todict</span><span class="p">(</span><span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">dic</span>
 
     <span class="k">def</span> <span class="nf">_todict</span><span class="p">(</span><span class="n">matobj</span><span class="p">):</span>
-        <span class="c1"># A recursive function which constructs from matobjects nested dictionaries</span>
+        <span class="sd">&quot;&quot;&quot;A recursive function which constructs from matobjects nested dictionaries.&quot;&quot;&quot;</span>
         <span class="n">dic</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">strg</span> <span class="ow">in</span> <span class="n">matobj</span><span class="o">.</span><span class="n">_fieldnames</span><span class="p">:</span>
             <span class="n">elem</span> <span class="o">=</span> <span class="n">matobj</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">strg</span><span class="p">]</span>
@@ -247,7 +256,7 @@
         <span class="k">return</span> <span class="n">dic</span>
 
     <span class="k">def</span> <span class="nf">_tolist</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-        <span class="c1"># convert numpy arrays from the matobj to python lists</span>
+        <span class="sd">&quot;&quot;&quot;convert numpy arrays from the matobj to python lists.&quot;&quot;&quot;</span>
         <span class="n">elem_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">mat_struct</span><span class="p">):</span>

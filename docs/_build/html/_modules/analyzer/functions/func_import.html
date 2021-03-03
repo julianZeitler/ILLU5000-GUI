@@ -144,7 +144,9 @@
            <div itemprop="articleBody">
             
   <h1>Source code for analyzer.functions.func_import</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">importlib</span> <span class="k">import</span> <span class="n">import_module</span>
+<span></span><span class="sd">&quot;&quot;&quot;This modules only purpose is to import classes dynamically&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="k">import</span> <span class="n">import_module</span>
 
 
 <div class="viewcode-block" id="dyn_import_cls"><a class="viewcode-back" href="../../../analyzer.functions.html#analyzer.functions.func_import.dyn_import_cls">[docs]</a><span class="k">def</span> <span class="nf">dyn_import_cls</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">class_name</span><span class="p">):</span>
@@ -152,9 +154,17 @@
 <span class="sd">    This function can be used to import classes dynamically.</span>
 <span class="sd">    The return can be used like any other class.</span>
 <span class="sd">    The function is used to dynamically import plot types specified in plot_types package.</span>
+
 <span class="sd">    :param module_name: module from which to import the class</span>
+<span class="sd">    :type module_name: str</span>
 <span class="sd">    :param class_name: name of the class</span>
+<span class="sd">    :type class_name: str</span>
 <span class="sd">    :return: class</span>
+<span class="sd">    :rtype: class</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       This function returns a class</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">module</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span>        <span class="c1"># import module</span>
     <span class="n">my_class</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">class_name</span><span class="p">)</span>  <span class="c1"># create class</span>

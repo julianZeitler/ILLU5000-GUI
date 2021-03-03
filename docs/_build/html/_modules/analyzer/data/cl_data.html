@@ -144,7 +144,9 @@
            <div itemprop="articleBody">
             
   <h1>Source code for analyzer.data.cl_data</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">dataclass</span>
+<span></span><span class="sd">&quot;&quot;&quot;This module is responsible for creating a data tree from a dictionary&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">dataclass</span>
 
 <span class="c1"># function to dynamically import classes</span>
 <span class="kn">from</span> <span class="nn">analyzer.functions.func_import</span> <span class="k">import</span> <span class="n">dyn_import_cls</span>
@@ -152,36 +154,55 @@
 
 <div class="viewcode-block" id="FileData"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData">[docs]</a><span class="k">class</span> <span class="nc">FileData</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    FileData is the top-level class for storing the in the mat file specified config and data in a hierarchical</span>
+<span class="sd">    FileData is the top-level class for storing the config and data specified in the mat file in a hierarchical</span>
 <span class="sd">    structure.</span>
-<span class="sd">    Because it is used for data storing purposes, it only contains variables and not methods. Matlab data files always</span>
-<span class="sd">    contain the variables __header__, __version__ and __globals__. When importing into Matlab only the struct plot_data</span>
-<span class="sd">    is visible. That is why FileData acts as a toplevel class, whose objects only contains plot_data.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       This tree is build upon nested classes and not inheritance!</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__header__</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">__version__</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="vm">__globals__</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">plot_data</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot; When creating mat files, the variables `__header__`, `__version__` and `__globals__` always get set. Because</span>
+<span class="sd">        double underscores are Python specific syntax these variables get stored without them. `plot_data` is read</span>
+<span class="sd">        from the mat file as a dictionary and contains the actual configuration and plotting data.</span>
+
 <span class="sd">        :param __header__: Matlab specific header</span>
+<span class="sd">        :type __header__: bytes</span>
 <span class="sd">        :param __version__: Matlab version</span>
+<span class="sd">        :type __version__: str</span>
 <span class="sd">        :param __globals__: Matlab globals</span>
+<span class="sd">        :type __globals__: list</span>
 <span class="sd">        :param plot_data: Data for creating the plots</span>
+<span class="sd">        :type plot_data: dict</span>
+
+<span class="sd">        When declaring `self.plot_data`, `plot_data` is given to the constructor of `PlotData` class.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__header__</span> <span class="o">=</span> <span class="n">__header__</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__version__</span> <span class="o">=</span> <span class="n">__version__</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__globals__</span> <span class="o">=</span> <span class="vm">__globals__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">__header__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">__version__</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globals</span> <span class="o">=</span> <span class="vm">__globals__</span>
 
         <span class="c1"># map the trace dictionary on the Trace class</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PlotData</span><span class="p">(</span><span class="o">**</span><span class="n">plot_data</span><span class="p">)</span>
 
 <div class="viewcode-block" id="FileData.PlotData"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData">[docs]</a>    <span class="k">class</span> <span class="nc">PlotData</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        PlotData is the class in whose objects the actual plotting data is stored in. On initialization, data, plot and</span>
-<span class="sd">        meta are passed. When coming from the load function, these attributes are dictionaries.</span>
+        <span class="sd">&quot;&quot;&quot; `PlotData` only defines the `__init__` method, to store data. There the members `self.data`, `self.plot`</span>
+<span class="sd">        and `self.meta` are declared.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">meta</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;</span>
+            <span class="sd">&quot;&quot;&quot; `self.data`&#39;s keys are assigned dynamically, so the variable `self.data` is a dictionary itself, that</span>
+<span class="sd">            can be accessed with the keywords defined previously.</span>
 <span class="sd">            :param data: data contains the actual plot data</span>
+<span class="sd">            :type data: dict</span>
+
+<span class="sd">            The same is true for `self.plot`, where different plot types can be defined. The dict&#39;s values are defined</span>
+<span class="sd">            as objects of the Figure class which then contains a list of all figure configuration.</span>
 <span class="sd">            :param plot: plot contains the configuration of the plots</span>
+<span class="sd">            :type plot: dict</span>
+
+<span class="sd">            `self.meta` contains meta information like the time when the trace has been recorded. `self.meta` gets</span>
+<span class="sd">            assigned to an object of the `Meta` dataclass.</span>
 <span class="sd">            :param meta: meta contains meta information about the recorded data</span>
+<span class="sd">            :type meta: dict</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="c1"># data/plot are dictionaries containing another dictionary</span>
             <span class="c1"># class Data receives the complete value of data via dictionary unpacking</span>
@@ -195,12 +216,14 @@
 
 <div class="viewcode-block" id="FileData.PlotData.Data"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Data">[docs]</a>        <span class="nd">@dataclass</span>
         <span class="k">class</span> <span class="nc">Data</span><span class="p">:</span>
+            <span class="sd">&quot;&quot;&quot;`Data` is the class, where the actual plotting data can be stored in.&quot;&quot;&quot;</span>
             <span class="n">values</span><span class="p">:</span> <span class="nb">list</span>
             <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
             <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span></div>
 
 <div class="viewcode-block" id="FileData.PlotData.Meta"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Meta">[docs]</a>        <span class="nd">@dataclass</span>
         <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+            <span class="sd">&quot;&quot;&quot;`Meta` is the class, where meta information can be stored in.&quot;&quot;&quot;</span>
             <span class="n">timestamp_last_sample</span><span class="p">:</span> <span class="nb">float</span>
             <span class="n">location</span><span class="p">:</span> <span class="nb">str</span>
             <span class="n">machine</span><span class="p">:</span> <span class="nb">str</span>
@@ -208,11 +231,11 @@
 
 <div class="viewcode-block" id="FileData.PlotData.Figure"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Figure">[docs]</a>        <span class="k">class</span> <span class="nc">Figure</span><span class="p">:</span>
             <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            The amount of figures can vary.</span>
+<span class="sd">            `Figure` defines the `__init__` method, as well as the `FigConfig` class.</span>
 <span class="sd">            The figure configuration can be accessed with plot_data.plot[...].figure[n]</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figure</span><span class="p">):</span>
-                <span class="sd">&quot;&quot;&quot;</span>
+                <span class="sd">&quot;&quot;&quot;The amount of figures can vary, therefore `self.figure` gets assigned as a list.</span>
 <span class="sd">                :param figure: a dictionary with the figure config as its value</span>
 <span class="sd">                &quot;&quot;&quot;</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="p">[]</span>
@@ -226,9 +249,15 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">linkaxes</span> <span class="o">=</span> <span class="n">val</span>
 
 <div class="viewcode-block" id="FileData.PlotData.Figure.FigConfig"><a class="viewcode-back" href="../../../analyzer.data.html#analyzer.data.cl_data.FileData.PlotData.Figure.FigConfig">[docs]</a>            <span class="k">class</span> <span class="nc">FigConfig</span><span class="p">:</span>
-                <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                FigConfig contains the actual figure configuration as well as the subplot configuration, which can be</span>
-<span class="sd">                altered for every plot type by adding classes to the plot_types package</span>
+                <span class="sd">&quot;&quot;&quot;`FigConfig` only defines an `__init__` method. It takes the actual figure configuration.</span>
+<span class="sd">                Besides the figure config, it contains the subplots and their configuration.</span>
+<span class="sd">                It is possible to create custom plot types, therefore the configuration of the subplots is outsourced</span>
+<span class="sd">                to the `plot_config` package. `FigConfig` only imports those classes dynamically and creates objects</span>
+<span class="sd">                with the according values.</span>
+
+<span class="sd">                .. note::</span>
+<span class="sd">                   Custom plotting types can be added</span>
+
 <span class="sd">                &quot;&quot;&quot;</span>
                 <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                              <span class="n">subplot</span><span class="p">,</span>

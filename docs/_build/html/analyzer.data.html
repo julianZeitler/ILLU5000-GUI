@@ -172,39 +172,49 @@
 </div>
 <div class="section" id="module-analyzer.data.cl_data">
 <span id="analyzer-data-cl-data-module"></span><h2>analyzer.data.cl_data module<a class="headerlink" href="#module-analyzer.data.cl_data" title="Permalink to this headline">¶</a></h2>
+<p>This module is responsible for creating a data tree from a dictionary</p>
 <dl class="class">
 <dt id="analyzer.data.cl_data.FileData">
 <em class="property">class </em><code class="descclassname">analyzer.data.cl_data.</code><code class="descname">FileData</code><span class="sig-paren">(</span><em>__header__: bytes</em>, <em>__version__: str</em>, <em>__globals__: list</em>, <em>plot_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/cl_data.html#FileData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.cl_data.FileData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>FileData is the top-level class for storing the in the mat file specified config and data in a hierarchical
-structure.
-Because it is used for data storing purposes, it only contains variables and not methods. Matlab data files always
-contain the variables __header__, __version__ and __globals__. When importing into Matlab only the struct plot_data
-is visible. That is why FileData acts as a toplevel class, whose objects only contains plot_data.</p>
+<p>FileData is the top-level class for storing the config and data specified in the mat file in a hierarchical
+structure.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tree is build upon nested classes and not inheritance!</p>
+</div>
 <dl class="class">
 <dt id="analyzer.data.cl_data.FileData.PlotData">
 <em class="property">class </em><code class="descname">PlotData</code><span class="sig-paren">(</span><em>data</em>, <em>plot</em>, <em>meta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/cl_data.html#FileData.PlotData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.cl_data.FileData.PlotData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>PlotData is the class in whose objects the actual plotting data is stored in. On initialization, data, plot and
-meta are passed. When coming from the load function, these attributes are dictionaries.</p>
+<p><cite>PlotData</cite> only defines the <cite>__init__</cite> method, to store data. There the members <cite>self.data</cite>, <cite>self.plot</cite>
+and <cite>self.meta</cite> are declared.</p>
 <dl class="class">
 <dt id="analyzer.data.cl_data.FileData.PlotData.Data">
 <em class="property">class </em><code class="descname">Data</code><span class="sig-paren">(</span><em>values: list</em>, <em>name: str</em>, <em>unit: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/cl_data.html#FileData.PlotData.Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.cl_data.FileData.PlotData.Data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><cite>Data</cite> is the class, where the actual plotting data can be stored in.</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="analyzer.data.cl_data.FileData.PlotData.Figure">
 <em class="property">class </em><code class="descname">Figure</code><span class="sig-paren">(</span><em>figure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/cl_data.html#FileData.PlotData.Figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.cl_data.FileData.PlotData.Figure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The amount of figures can vary.
+<p><cite>Figure</cite> defines the <cite>__init__</cite> method, as well as the <cite>FigConfig</cite> class.
 The figure configuration can be accessed with plot_data.plot[…].figure[n]</p>
 <dl class="class">
 <dt id="analyzer.data.cl_data.FileData.PlotData.Figure.FigConfig">
 <em class="property">class </em><code class="descname">FigConfig</code><span class="sig-paren">(</span><em>subplot</em>, <em>title: str = ' '</em>, <em>subplot_rows: int = 1</em>, <em>subplot_cols: int = 1</em>, <em>constrained_layout: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/cl_data.html#FileData.PlotData.Figure.FigConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.cl_data.FileData.PlotData.Figure.FigConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>FigConfig contains the actual figure configuration as well as the subplot configuration, which can be
-altered for every plot type by adding classes to the plot_types package</p>
+<p><cite>FigConfig</cite> only defines an <cite>__init__</cite> method. It takes the actual figure configuration.
+Besides the figure config, it contains the subplots and their configuration.
+It is possible to create custom plot types, therefore the configuration of the subplots is outsourced
+to the <cite>plot_config</cite> package. <cite>FigConfig</cite> only imports those classes dynamically and creates objects
+with the according values.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Custom plotting types can be added</p>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -213,6 +223,7 @@ altered for every plot type by adding classes to the plot_types package</p>
 <dt id="analyzer.data.cl_data.FileData.PlotData.Meta">
 <em class="property">class </em><code class="descname">Meta</code><span class="sig-paren">(</span><em>timestamp_last_sample: float</em>, <em>location: str</em>, <em>machine: str</em>, <em>worker: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/cl_data.html#FileData.PlotData.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.cl_data.FileData.PlotData.Meta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p><cite>Meta</cite> is the class, where meta information can be stored in.</p>
 </dd></dl>
 
 </dd></dl>
@@ -222,10 +233,12 @@ altered for every plot type by adding classes to the plot_types package</p>
 </div>
 <div class="section" id="module-analyzer.data.data">
 <span id="analyzer-data-data-module"></span><h2>analyzer.data.data module<a class="headerlink" href="#module-analyzer.data.data" title="Permalink to this headline">¶</a></h2>
+<p>This module creates a mat file from the dictionary specified in it.</p>
 <dl class="function">
-<dt id="analyzer.data.data.data_mat">
-<code class="descclassname">analyzer.data.data.</code><code class="descname">data_mat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/data.html#data_mat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.data.data_mat" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="analyzer.data.data.save_mat">
+<code class="descclassname">analyzer.data.data.</code><code class="descname">save_mat</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/analyzer/data/data.html#save_mat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#analyzer.data.data.save_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function utilizes the <cite>scipy.io.savemat()</cite> method to create mat files</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-analyzer.data">

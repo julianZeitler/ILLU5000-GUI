@@ -156,11 +156,18 @@
 <div class="viewcode-block" id="Plot"><a class="viewcode-back" href="../../../analyzer.plot.html#analyzer.plot.cl_plot.Plot">[docs]</a><span class="k">class</span> <span class="nc">Plot</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot is responsible for building the plot from the data inside of a FileData object.</span>
-<span class="sd">    Therefore it receives the arguments data and key upon instantiation. Data can either be the name of a .mat file</span>
-<span class="sd">    or an already created instance of FileData. Key is the name of the plot that should be plotted.</span>
 <span class="sd">    The created axes objects can be accessed via plot.figure[..].subplot[...]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Therefore it receives the arguments data and key upon instantiation.</span>
+<span class="sd">        `data` can either be the name of a .mat file or an already created instance of `FileData.`</span>
+<span class="sd">        `key` is the name of the plot that should be plotted.</span>
+
+<span class="sd">        :param data: name of .mat file or instance of `FileData`</span>
+<span class="sd">        :type data: str or object</span>
+<span class="sd">        :param key: name of the plot type</span>
+<span class="sd">        :type key: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">read_data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
             <span class="n">file_data</span> <span class="o">=</span> <span class="n">FileData</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">read_data</span><span class="p">)</span>
@@ -184,10 +191,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_auto_zoom</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_linkaxes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># links all axes in ax_list</span>
+        <span class="sd">&quot;&quot;&quot;links all axes in `self.ax_list`&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_shared_x_axes</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ax_list</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_auto_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;creates a `Zoom` object for every ax object in `self.ax_list`&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax_list</span><span class="p">:</span>
             <span class="n">Zoom</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 
@@ -195,6 +203,7 @@
     <span class="k">def</span> <span class="nf">_create_figures</span><span class="p">(</span><span class="n">fig_config</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        _create_figures is a private method, which -as the name suggests- creates the figure instances.</span>
+
 <span class="sd">        :param fig_config: figure configuration stored in file_data.plot_data.plot[...].figure[...]</span>
 <span class="sd">        :param data: the actual plotting data</span>
 <span class="sd">        :return: a list of axes objects</span>
@@ -218,6 +227,7 @@
 
 <div class="viewcode-block" id="Plot.Subplot"><a class="viewcode-back" href="../../../analyzer.plot.html#analyzer.plot.cl_plot.Plot.Subplot">[docs]</a>    <span class="nd">@dataclass</span>
     <span class="k">class</span> <span class="nc">Subplot</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;dataclass in which the subplots are stored as a list&quot;&quot;&quot;</span>
         <span class="n">subplot</span><span class="p">:</span> <span class="nb">list</span></div></div>
 </pre></div>
 

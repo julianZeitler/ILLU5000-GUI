@@ -148,7 +148,7 @@
 <span class="kn">from</span> <span class="nn">argparse</span> <span class="k">import</span> <span class="n">ArgumentParser</span>
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">show</span>
 
-<span class="kn">from</span> <span class="nn">analyzer.data.data</span> <span class="k">import</span> <span class="n">data_mat</span>
+<span class="kn">from</span> <span class="nn">analyzer.data.data</span> <span class="k">import</span> <span class="n">save_mat</span>
 <span class="kn">from</span> <span class="nn">analyzer.plot.cl_plot</span> <span class="k">import</span> <span class="n">Plot</span>
 
 
@@ -168,7 +168,7 @@
         <span class="n">show</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">create</span><span class="p">:</span>
-        <span class="n">data_mat</span><span class="p">()</span></div>
+        <span class="n">save_mat</span><span class="p">(</span><span class="s1">&#39;data.mat&#39;</span><span class="p">)</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
