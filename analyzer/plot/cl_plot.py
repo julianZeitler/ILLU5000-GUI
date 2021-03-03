@@ -10,11 +10,17 @@ from analyzer.plot.cl_zoom import Zoom
 class Plot:
     """
     Plot is responsible for building the plot from the data inside of a FileData object.
-    Therefore it receives the arguments data and key upon instantiation. Data can either be the name of a .mat file
-    or an already created instance of FileData. Key is the name of the plot that should be plotted.
     The created axes objects can be accessed via plot.figure[..].subplot[...]
     """
     def __init__(self, data, key):
+        """Therefore it receives the arguments data and key upon instantiation.
+        `data` can either be the name of a .mat file or an already created instance of `FileData.`
+        `key` is the name of the plot that should be plotted.
+        :param data: name of .mat file or instance of `FileData`
+        :type data: str or object
+        :param key: name of the plot type
+        :type key: str
+        """
         if type(data) == str:
             self.read_data = load(data)
             file_data = FileData(**self.read_data)
@@ -38,10 +44,11 @@ class Plot:
         self._auto_zoom()
 
     def _linkaxes(self):
-        # links all axes in ax_list
+        """links all axes in `self.ax_list`"""
         self.ax_list[0].get_shared_x_axes().join(*self.ax_list)
 
     def _auto_zoom(self):
+        """creates a `Zoom` object for every ax object in `self.ax_list`"""
         for ax in self.ax_list:
             Zoom(ax)
 
@@ -72,4 +79,5 @@ class Plot:
 
     @dataclass
     class Subplot:
+        """dataclass in which the subplots are stored as a list"""
         subplot: list
