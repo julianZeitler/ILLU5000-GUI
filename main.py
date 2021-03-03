@@ -22,7 +22,7 @@ def main():
         show()
 
     if args.create:
-        data_mat()
+        data_mat('data.mat')
 
 
 if __name__ == '__main__':
