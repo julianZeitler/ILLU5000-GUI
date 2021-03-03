@@ -23,7 +23,6 @@ def save(object, file: str = None, names=['PlotData']):
     :param file: Default: None. If specified, `save` writes the dictionary to .mat file with the name specified in file
     :type file: str
     :return: a dictionary
-    :rtype: dict
     """
 
     def _inner_classes(obj):
@@ -83,7 +82,6 @@ def load(filename):
     :param filename: Name of matlab file
     :type filename: str
     :return: Dictionary of the matlab data structure
-    :rtype: dict
     """
     data = loadmat(filename, struct_as_record=False, squeeze_me=True)
 

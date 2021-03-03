@@ -10,7 +10,6 @@ analyzer.plot.cl\_plot module
 .. automodule:: analyzer.plot.cl_plot
     :members:
     :undoc-members:
-    :private-members:
 
 analyzer.plot.cl\_regression module
 -----------------------------------
@@ -25,7 +24,6 @@ analyzer.plot.cl\_zoom module
 .. automodule:: analyzer.plot.cl_zoom
     :members:
     :undoc-members:
-    :private-members:
 
 
 Module contents
@@ -34,4 +32,3 @@ Module contents
 .. automodule:: analyzer.plot
     :members:
     :undoc-members:
-    :private-members:
