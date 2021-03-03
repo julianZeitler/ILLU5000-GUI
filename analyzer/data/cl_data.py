@@ -11,8 +11,9 @@ class FileData:
     Because it is used for data storing purposes, it only contains variables and not methods. Matlab data files always
     contain the variables __header__, __version__ and __globals__. When importing into Matlab only the struct plot_data
     is visible. That is why FileData acts as a toplevel class, whose objects only contains plot_data.
+
     .. warning::
-       This tree is build upon nested classes and not by inheritance!
+       This tree is build upon nested classes and not inheritance!
 
     """
     def __init__(self, __header__: bytes, __version__: str, __globals__: list, plot_data):
