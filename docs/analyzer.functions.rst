@@ -17,6 +17,7 @@ analyzer.functions.func\_mat module
 .. automodule:: analyzer.functions.func_mat
     :members:
     :undoc-members:
+    :private-members:
 
 
 Module contents
