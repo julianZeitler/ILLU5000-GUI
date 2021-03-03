@@ -4,7 +4,7 @@ import numpy as np
 from scipy.io import savemat
 
 
-def data_mat(name):
+def save_mat(name):
     """This function utilizes the `scipy.io.savemat()` method to create mat files"""
 
     t_incremental = np.linspace(0.1, 20.1, 200)
