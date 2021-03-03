@@ -1,6 +1,6 @@
-"""func_mat.py contains the function load and save.
-load loads a matlab file and outputs structs as a python dictionary and vectors as python lists
-save writes the cl_data object to a dictionary, which can then be written to a matlab file
+"""`func_mat.py` contains the function `load` and `save`.
+`load` loads a matlab file and outputs structs as a python dictionary and vectors as python lists.
+`save` writes the `FileData` object to a dictionary, which can then be written to a matlab file
 """
 
 from dataclasses import is_dataclass, asdict
@@ -13,7 +13,7 @@ from scipy.io.matlab.mio5_params import mat_struct
 
 def save(object, file: str = None, names=['PlotData']):
     """
-    Save is a recursive function, which goes over the hole data structure (cl_data)
+    Save is a recursive function, which goes over the hole data structure (`cl_data`)
     and converts it back to a dictionary.
 
     :param object: The object, which should be converted
