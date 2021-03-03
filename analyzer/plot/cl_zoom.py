@@ -1,6 +1,6 @@
 """This module is used to automatically adjust the y-limits upon zoom
-.. todo:: currently the x- and y-data is read from the axes objects every time the limits are changed. It would be sufficient to read them only once upon creation.
-
+.. todo:: currently the x- and y-data is read from the axes objects every time the limits are changed.
+    It would be sufficient to read them only once upon creation.
 """
 
 from matplotlib.pyplot import gca
@@ -12,7 +12,7 @@ class Zoom:
         # create callback for ax on event xlim_changed
         self.cid = ax.callbacks.connect('xlim_changed', self)
 
-    # Gets executed when AutoYrange() is called
+    # Gets executed when Zoom() is called
     def __call__(self, event):
         # get the current axis
         ca = gca()
