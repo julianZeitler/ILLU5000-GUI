@@ -1,4 +1,6 @@
 #! /usr/bin/python3
+"""This is the main module of the project. Execute this script to run the program."""
+
 from argparse import ArgumentParser
 from matplotlib.pyplot import show
 
@@ -7,6 +9,7 @@ from analyzer.plot.cl_plot import Plot
 
 
 def main():
+    """The main function takes command line arguments and executes the according parts of the program."""
     parser = ArgumentParser()
     parser.add_argument('file', help='The data file from witch the information should be taken.', type=str)
     parser.add_argument('key', help='Key for specifying plot type.', type=str)
