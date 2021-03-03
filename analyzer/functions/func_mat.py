@@ -15,6 +15,7 @@ def save(object, file: str = None, names=['PlotData']):
     """
     Save is a recursive function, which goes over the hole data structure (cl_data)
     and converts it back to a dictionary.
+
     :param object: The object, which should be converted
     :type object: object
     :param names: [typically: 'PlotData'] The names of the inner classes, required for the next recursion step
@@ -28,6 +29,7 @@ def save(object, file: str = None, names=['PlotData']):
     def _inner_classes(obj):
         """Like the name suggests, this function gets the inner classes of an
         object and returns their objects as a list.
+
         :param obj: Class instance
         :return: A list of class instances, that were instantiated by a class inside of the class obj originated from
         """
