@@ -12,7 +12,7 @@ class FileData:
     contain the variables __header__, __version__ and __globals__. When importing into Matlab only the struct plot_data
     is visible. That is why FileData acts as a toplevel class, whose objects only contains plot_data.
 
-    .. warning::
+    .. note::
        This tree is build upon nested classes and not inheritance!
 
     """
