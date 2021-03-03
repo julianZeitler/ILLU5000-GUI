@@ -17,6 +17,7 @@ class Base:
                  plot_type='LinLin',
                  regression=''):
         """ The basic subplot config gets stored here.
+
         :param plots: Name of the plots that are in the subplot
         :type plots: list
         :param title: subplot title
@@ -30,7 +31,7 @@ class Base:
         :param grid: toggle grid
         :type grid: bool
         :param plot_type: name of class from which `plot()` should be inherited
-        (it is sufficient to write the name without )
+        (it is sufficient to write the name without *plt_*)
         :type plot_type: str
         :param regression: optionally add regression type
         :type regression: str
