@@ -16,6 +16,7 @@ class Plot:
         """Therefore it receives the arguments data and key upon instantiation.
         `data` can either be the name of a .mat file or an already created instance of `FileData.`
         `key` is the name of the plot that should be plotted.
+
         :param data: name of .mat file or instance of `FileData`
         :type data: str or object
         :param key: name of the plot type
@@ -56,6 +57,7 @@ class Plot:
     def _create_figures(fig_config, data):
         """
         _create_figures is a private method, which -as the name suggests- creates the figure instances.
+
         :param fig_config: figure configuration stored in file_data.plot_data.plot[...].figure[...]
         :param data: the actual plotting data
         :return: a list of axes objects
