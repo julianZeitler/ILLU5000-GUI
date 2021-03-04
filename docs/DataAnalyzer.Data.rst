@@ -6,6 +6,7 @@ Submodules
 
 DataAnalyzer.Data.cl\_data module
 ---------------------------------
+.. _cl_data:
 
 .. automodule:: DataAnalyzer.Data.cl_data
     :members:

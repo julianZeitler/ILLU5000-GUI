@@ -41,7 +41,7 @@ because the program will call it that way.
 The first argument gets assigned a Matplotlib axes object, which can be understood as a subplot. By changing it's
 properties, the subplot can be customized. The second argument will be an object of
 `DataAnalyzer.Data.cl_data.FileData.plot_data.Data`
-which contains the actual plotting data (:ref:`reference <plot_data.data>`). You will have to index it with the correct
+which contains the actual plotting data (:ref:`reference <cl_data>`). You will have to index it with the correct
 name. The following is the `plot` method from :ref:`DataAnalyzer.PlotConfig.TwoD.plt_TwoD <plt_twod>` module.
 
 .. code-block:: python
