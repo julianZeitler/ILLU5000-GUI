@@ -9,7 +9,9 @@ from DataAnalyzer.Plot.cl_plot import Plot
 
 
 def main():
-    """The main function takes command line arguments and executes the according parts of the program."""
+    """The main function takes command line arguments and executes the according parts of the program.
+    .. todo:: take the correct arguments and handle them correctly. (When generating .mat file, use generated one)
+    """
     parser = ArgumentParser()
     parser.add_argument('file', help='The Data file from witch the information should be taken.', type=str)
     parser.add_argument('key', help='Key for specifying Plot type.', type=str)
