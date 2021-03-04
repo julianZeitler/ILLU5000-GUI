@@ -12,6 +12,8 @@ Welcome to Data Analyzer's documentation!
 
    overview
    modules
+   usage
+   developer-guide
 
 
 

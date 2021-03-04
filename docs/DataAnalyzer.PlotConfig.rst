@@ -14,6 +14,7 @@ Submodules
 
 DataAnalyzer.PlotConfig.plt\_Base module
 ----------------------------------------
+.. _plt_base:
 
 .. automodule:: DataAnalyzer.PlotConfig.plt_Base
     :members:
