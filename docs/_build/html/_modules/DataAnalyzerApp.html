@@ -80,7 +80,8 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../modules.html">ILLU5000-GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">DataAnalyzer</a></li>
 </ul>
 
             
@@ -145,7 +146,7 @@
             
   <h1>Source code for DataAnalyzerApp</h1><div class="highlight"><pre>
 <span></span><span class="ch">#! /usr/bin/python3</span>
-<span class="sd">&quot;&quot;&quot;This is the main module of the project. Execute this script to run the program.&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;This is the main module of the project. Execute this module to run the program.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">argparse</span> <span class="k">import</span> <span class="n">ArgumentParser</span>
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">show</span>
@@ -156,24 +157,24 @@
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../DataAnalyzerApp.html#DataAnalyzerApp.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;The main function takes command line arguments and executes the according parts of the program.</span>
-<span class="sd">    .. todo:: take the correct arguments and handle them correctly. (When generating .mat file, use generated one)</span>
+<span class="sd">    .. todo:: take the correct arguments and handle them correctly. (When generating .mat file, use `file` as name)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The Data file from witch the information should be taken.&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Key for specifying Plot type.&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;--create&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Generate .mat file from python dict in Data package.&#39;</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Key for specifying plot type.&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;--create&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Generate .mat file from python dict in data package.&#39;</span><span class="p">,</span>
                         <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--test&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Supress display output for testing purposes.&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
 
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">create</span><span class="p">:</span>
+        <span class="n">save_mat</span><span class="p">(</span><span class="s1">&#39;data.mat&#39;</span><span class="p">)</span>
+
     <span class="n">plot</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">test</span><span class="p">:</span>
-        <span class="n">show</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">create</span><span class="p">:</span>
-        <span class="n">save_mat</span><span class="p">(</span><span class="s1">&#39;Data.mat&#39;</span><span class="p">)</span></div>
+        <span class="n">show</span><span class="p">()</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
