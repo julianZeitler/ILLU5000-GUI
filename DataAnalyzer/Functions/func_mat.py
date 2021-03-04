@@ -13,7 +13,7 @@ from scipy.io.matlab.mio5_params import mat_struct
 
 def save(object, file: str = None, names=['PlotData']):
     """
-    `save` is a recursive function which goes over the hole data structure (`cl_data`)
+    `save` is a recursive function which goes over the hole Data structure (`cl_data`)
     and converts it back to a dictionary.
 
     :param object: The object, which should be converted
@@ -81,7 +81,7 @@ def load(filename):
 
     :param filename: Name of matlab file
     :type filename: str
-    :return: Dictionary of the matlab data structure
+    :return: Dictionary of the matlab Data structure
     """
     data = loadmat(filename, struct_as_record=False, squeeze_me=True)
 

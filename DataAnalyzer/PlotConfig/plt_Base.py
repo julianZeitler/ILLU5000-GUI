@@ -1,11 +1,11 @@
-"""The Base module is the parent class of all plot_types that are specified in plot_types module."""
+"""The Base module is the parent class of all PlotTypes that are specified in PlotTypes module."""
 
 
 class Base:
     """This class defines the init method, the most basic configuration can be stored here.
-    For basic 2-dimensional plots, the plot method is specified in `two_d.plot_TwoD.TwoD.plot()`.
-    For further specification, `plot()` calls (if it exists) the `plot_specific` method,
-    which can be defined in every plot type.
+    For basic 2-dimensional plots, the Plot method is specified in `TwoD.plot_TwoD.TwoD.Plot()`.
+    For further specification, `Plot()` calls (if it exists) the `plot_specific` method,
+    which can be defined in every Plot type.
     """
     def __init__(self,
                  plots,
@@ -30,7 +30,7 @@ class Base:
         :type legend: str
         :param grid: toggle grid
         :type grid: bool
-        :param plot_type: name of class `plot()` should be inherited from
+        :param plot_type: name of class `Plot()` should be inherited from
             (it is sufficient to write the name without *plt_*)
         :type plot_type: str
         :param regression: optionally add regression type

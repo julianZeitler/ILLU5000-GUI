@@ -2,24 +2,24 @@ from matplotlib.pyplot import subplots
 from numpy import ndarray
 from dataclasses import dataclass
 
-from analyzer.functions.func_mat import load, save
-from analyzer.data.cl_data import FileData
-from analyzer.plot.cl_zoom import Zoom
+from DataAnalyzer.Functions.func_mat import load, save
+from DataAnalyzer.Data.cl_data import FileData
+from DataAnalyzer.Plot.cl_zoom import Zoom
 
 
 class Plot:
     """
-    Plot is responsible for building the plot from the data inside of a FileData object.
-    The created axes objects can be accessed via plot.figure[..].subplot[...]
+    Plot is responsible for building the Plot from the Data inside of a FileData object.
+    The created axes objects can be accessed via Plot.figure[..].subplot[...]
     """
     def __init__(self, data, key):
-        """Therefore it receives the arguments data and key upon instantiation.
-        `data` can either be the name of a .mat file or an already created instance of `FileData.`
-        `key` is the name of the plot that should be plotted.
+        """Therefore it receives the arguments Data and key upon instantiation.
+        `Data` can either be the name of a .mat file or an already created instance of `FileData.`
+        `key` is the name of the Plot that should be plotted.
 
         :param data: name of .mat file or instance of `FileData`
         :type data: str or object
-        :param key: name of the plot type
+        :param key: name of the Plot type
         :type key: str
         """
         if type(data) == str:
@@ -28,7 +28,7 @@ class Plot:
         elif type(data) == object:
             file_data = data
         else:
-            raise TypeError('data was not of type string or object')
+            raise TypeError('Data was not of type string or object')
 
         self.data = file_data.plot_data.data      # dictionary
         self.plot = file_data.plot_data.plot    # dictionary
@@ -58,8 +58,8 @@ class Plot:
         """
         _create_figures is a private method, which -as the name suggests- creates the figure instances.
 
-        :param fig_config: figure configuration stored in file_data.plot_data.plot[...].figure[...]
-        :param data: the actual plotting data
+        :param fig_config: figure configuration stored in file_data.plot_data.Plot[...].figure[...]
+        :param data: the actual plotting Data
         :return: a list of axes objects
         """
         fig, axs = subplots(ncols=fig_config.subplot_cols,

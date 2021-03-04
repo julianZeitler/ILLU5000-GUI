@@ -9,7 +9,7 @@ from numpy import asarray, sqrt, log, exp
 class Regression:
     """The specific regression types inherit from this class."""
     def __init__(self, ax):
-        """Read the data from the axes and calculate the sums of x- and y-data
+        """Read the Data from the axes and calculate the sums of x- and y-Data
 
         :param ax: axis object
         :type ax: object
