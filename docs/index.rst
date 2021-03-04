@@ -11,6 +11,7 @@ Welcome to Data Analyzer's documentation!
    :caption: Contents:
 
    modules
+   overview
 
 
 
