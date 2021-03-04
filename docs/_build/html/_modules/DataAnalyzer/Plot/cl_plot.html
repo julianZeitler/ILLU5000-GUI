@@ -80,7 +80,8 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">ILLU5000-GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">DataAnalyzer</a></li>
 </ul>
 
             
@@ -174,7 +175,7 @@
         <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
             <span class="n">file_data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data was not of type string or object&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data was not of type string nor object&#39;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">file_data</span><span class="o">.</span><span class="n">plot_data</span><span class="o">.</span><span class="n">data</span>      <span class="c1"># dictionary</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">file_data</span><span class="o">.</span><span class="n">plot_data</span><span class="o">.</span><span class="n">plot</span>    <span class="c1"># dictionary</span>

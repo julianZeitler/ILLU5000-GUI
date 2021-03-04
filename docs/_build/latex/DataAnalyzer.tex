@@ -76,8 +76,44 @@
 
 
 
-\chapter{ILLU5000-GUI}
-\label{\detokenize{modules:illu5000-gui}}\label{\detokenize{modules::doc}}
+\chapter{Overview}
+\label{\detokenize{overview:overview}}\label{\detokenize{overview::doc}}
+This program can be used to plot and then analyze data.
+The data is given to a program over a \sphinxtitleref{.mat} file. Examples of plots are shown below:
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{fig1}.png}
+\caption{\sphinxstyleemphasis{Example figure 1 with standard plot types}}\label{\detokenize{overview:id1}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{fig2}.png}
+\caption{\sphinxstyleemphasis{Example figure 2 with root regression}}\label{\detokenize{overview:id2}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{fig3}.png}
+\caption{\sphinxstyleemphasis{Example figure 3 polar plot}}\label{\detokenize{overview:id3}}\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics{{fig4}.png}
+\caption{\sphinxstyleemphasis{Example figure 4 histogram}}\label{\detokenize{overview:id4}}\end{figure}
+
+Additional plot types can easily implemented, see developer guide.
+
+
+\chapter{DataAnalyzer}
+\label{\detokenize{modules:dataanalyzer}}\label{\detokenize{modules::doc}}
 
 \section{DataAnalyzer package}
 \label{\detokenize{DataAnalyzer:dataanalyzer-package}}\label{\detokenize{DataAnalyzer::doc}}
@@ -823,13 +859,13 @@ The basic subplot config gets stored here.
 
 \section{DataAnalyzerApp module}
 \label{\detokenize{DataAnalyzerApp:module-DataAnalyzerApp}}\label{\detokenize{DataAnalyzerApp:dataanalyzerapp-module}}\label{\detokenize{DataAnalyzerApp::doc}}\index{DataAnalyzerApp (module)@\spxentry{DataAnalyzerApp}\spxextra{module}}
-This is the main module of the project. Execute this script to run the program.
+This is the main module of the project. Execute this module to run the program.
 \index{main() (in module DataAnalyzerApp)@\spxentry{main()}\spxextra{in module DataAnalyzerApp}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{DataAnalyzerApp:DataAnalyzerApp.main}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{DataAnalyzerApp.}}\sphinxbfcode{\sphinxupquote{main}}}{}{}
 The main function takes command line arguments and executes the according parts of the program.
-.. todo:: take the correct arguments and handle them correctly. (When generating .mat file, use generated one)
+.. todo:: take the correct arguments and handle them correctly. (When generating .mat file, use \sphinxtitleref{file} as name)
 
 \end{fulllineitems}
 

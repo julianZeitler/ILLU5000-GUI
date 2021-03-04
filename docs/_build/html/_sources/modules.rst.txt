@@ -1,4 +1,4 @@
-ILLU5000-GUI
+DataAnalyzer
 ============
 
 .. toctree::
