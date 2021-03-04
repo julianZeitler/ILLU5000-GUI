@@ -13,13 +13,13 @@ Creating Additional Plot Types
 Additional plot types can be added in the `DataAnalyzer.PlotConfig.PlotTypes`
 package. A plot type module must have the following syntax:
 
-.. code-block::
+.. code-block:: python
 
     plt_YourCustomPlotType
 
 And the class name must then be:
 
-.. code-block::
+.. code-block:: python
 
     YourCustomPlotType
 

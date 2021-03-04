@@ -9,7 +9,7 @@ Basic Execution
 
 To run the program execute
 
-.. code-block::
+.. code-block:: bash
 
     python3 DataAnalyzerApp *file_name* *key*
 
@@ -22,7 +22,7 @@ Command Line Arguments
 
 Following arguments can be specified:
 
-.. code-block::
+.. code-block:: bash
 
     usage: DataAnalyzerApp.py [-h] [-c] [-t] file key
 
