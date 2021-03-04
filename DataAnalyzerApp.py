@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-"""This is the main module of the project. Execute this script to run the program."""
+"""This is the main module of the project. Execute this module to run the program."""
 
 from argparse import ArgumentParser
 from matplotlib.pyplot import show
@@ -22,7 +22,7 @@ def main():
     args = parser.parse_args()
 
     if args.create:
-        save_mat('Data.mat')
+        save_mat('data.mat')
 
     plot = Plot(args.file, args.key)
 
