@@ -14,7 +14,7 @@ To run the program execute
     python3 DataAnalyzerApp *file_name* *key*
 
 Where *file_name* is the name of the mat file
-from which the program should take it's information from
+from which the program should take it's information
 and *key* is the specified plotting type.
 
 Command Line Arguments

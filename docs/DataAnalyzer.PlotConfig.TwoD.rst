@@ -6,6 +6,7 @@ Submodules
 
 DataAnalyzer.PlotConfig.TwoD.plt\_TwoD module
 ---------------------------------------------
+.. _plt_twod:
 
 .. automodule:: DataAnalyzer.PlotConfig.TwoD.plt_TwoD
     :members:

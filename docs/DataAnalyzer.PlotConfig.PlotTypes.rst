@@ -3,6 +3,7 @@ DataAnalyzer.PlotConfig.PlotTypes package
 
 Submodules
 ----------
+.. _plottypes:
 
 DataAnalyzer.PlotConfig.PlotTypes.plt\_Hist module
 --------------------------------------------------
