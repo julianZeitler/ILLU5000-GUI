@@ -17,4 +17,3 @@ Module contents
 .. automodule:: DataAnalyzer
     :members:
     :undoc-members:
-    :show-inheritance:
