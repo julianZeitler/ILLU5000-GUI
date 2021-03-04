@@ -10,8 +10,8 @@ Welcome to Data Analyzer's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
    overview
+   modules
 
 
 
