@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'ILLU5000-GUI'
+project = 'Data Analyzer'
 copyright = '2021, Julian Zeitler'
 author = 'Julian Zeitler'
 
@@ -105,7 +105,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ILLU5000-GUIdoc'
+htmlhelp_basename = 'DataAnalyzerdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -132,7 +132,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ILLU5000-GUI.tex', 'ILLU5000-GUI Documentation',
+    (master_doc, 'DataAnalyzer.tex', 'Data Analyzer Documentation',
      'Julian Zeitler', 'manual'),
 ]
 
@@ -142,7 +142,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'illu5000-gui', 'ILLU5000-GUI Documentation',
+    (master_doc, 'dataanalyzer', 'Data Analyzer Documentation',
      [author], 1)
 ]
 
@@ -153,8 +153,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'ILLU5000-GUI', 'ILLU5000-GUI Documentation',
-     author, 'ILLU5000-GUI', 'One line description of project.',
+    (master_doc, 'DataAnalyzer', 'Data Analyzer Documentation',
+     author, 'DataAnalyzer', 'One line description of project.',
      'Miscellaneous'),
 ]
 
