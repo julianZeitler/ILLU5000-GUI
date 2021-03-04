@@ -125,7 +125,7 @@ class FileData:
                              ):
                     """
                     .. note::
-                       individual subplots configs are saved dynamically to plot type classes!
+                       individual subplots configs are saved dynamically as plot type objects!
 
                     `__init__` defines the figure configuration:
 
