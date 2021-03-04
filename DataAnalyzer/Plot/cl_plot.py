@@ -28,7 +28,7 @@ class Plot:
         elif type(data) == object:
             file_data = data
         else:
-            raise TypeError('Data was not of type string or object')
+            raise TypeError('Data was not of type string nor object')
 
         self.data = file_data.plot_data.data      # dictionary
         self.plot = file_data.plot_data.plot    # dictionary

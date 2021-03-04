@@ -17,7 +17,7 @@ def save_mat(name):
     raw_voltage = np.log(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
     x_hist = mu + sigma * np.random.randn(10000)
 
-    d1 = {'plot_data': {'Data': {'raw_force': {'values': raw_force, 'name': 'Raw Force', 'unit': 'N'},
+    d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw Force', 'unit': 'N'},
                                  'current': {'values': current, 'name': 'Current', 'unit': 'A'},
                                  'raw_voltage': {'values': raw_voltage, 'name': 'Raw Voltage', 'unit': 'V'},
                                  'rad': {'values': rad, 'name': 'rad', 'unit': 'm'},
@@ -29,7 +29,7 @@ def save_mat(name):
                                  'location': 'Deutschland, Oberkochen',
                                  'machine': 'bla',
                                  'worker': 'Max Mustermann'},
-                        'Plot': {'raw': {'figure': [{'subplot_cols': 2,
+                        'plot': {'raw': {'figure': [{'subplot_cols': 2,
                                                      'subplot_rows': 2,
                                                      'subplot': [{'plots': [['t_incremental', 'raw_force'],
                                                                             ['t_incremental', 'current']],
