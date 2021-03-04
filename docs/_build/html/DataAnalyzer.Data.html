@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataAnalyzer.Data package &mdash; Data Analyzer  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DataAnalyzer.Functions package" href="DataAnalyzer.Functions.html" />
+    <link rel="prev" title="DataAnalyzer package" href="DataAnalyzer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Data Analyzer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">ILLU5000-GUI</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="DataAnalyzer.html">DataAnalyzer package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="DataAnalyzer.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">DataAnalyzer.Data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DataAnalyzer.Functions.html">DataAnalyzer.Functions package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DataAnalyzer.Plot.html">DataAnalyzer.Plot package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="DataAnalyzer.PlotConfig.html">DataAnalyzer.PlotConfig package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="DataAnalyzer.html#module-DataAnalyzer">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DataAnalyzerApp.html">DataAnalyzerApp module</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Data Analyzer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">ILLU5000-GUI</a> &raquo;</li>
+        
+          <li><a href="DataAnalyzer.html">DataAnalyzer package</a> &raquo;</li>
+        
+      <li>DataAnalyzer.Data package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/DataAnalyzer.Data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dataanalyzer-data-package">
+<h1>DataAnalyzer.Data package<a class="headerlink" href="#dataanalyzer-data-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-DataAnalyzer.Data.cl_data">
+<span id="dataanalyzer-data-cl-data-module"></span><h2>DataAnalyzer.Data.cl_data module<a class="headerlink" href="#module-DataAnalyzer.Data.cl_data" title="Permalink to this headline">¶</a></h2>
+<p>This module is responsible for creating a Data tree from a dictionary</p>
+<dl class="class">
+<dt id="DataAnalyzer.Data.cl_data.FileData">
+<em class="property">class </em><code class="descclassname">DataAnalyzer.Data.cl_data.</code><code class="descname">FileData</code><span class="sig-paren">(</span><em>__header__: bytes</em>, <em>__version__: str</em>, <em>__globals__: list</em>, <em>plot_data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/cl_data.html#FileData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.cl_data.FileData" title="Permalink to this definition">¶</a></dt>
+<dd><p>FileData is the top-level class for storing the config and Data specified in the mat file in a hierarchical
+structure.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This tree is build upon nested classes and not inheritance!</p>
+</div>
+<p>When creating mat files, the variables <cite>__header__</cite>, <cite>__version__</cite> and <cite>__globals__</cite> always get set. Because
+double underscores are Python specific syntax these variables get stored without them. <cite>plot_data</cite> is read
+from the mat file as a dictionary and contains the actual configuration and plotting Data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>__header__</strong> (<em>bytes</em>) – Matlab specific header</li>
+<li><strong>__version__</strong> (<em>str</em>) – Matlab version</li>
+<li><strong>__globals__</strong> (<em>list</em>) – Matlab globals</li>
+<li><strong>plot_data</strong> (<em>dict</em>) – Data for creating the plots</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>When declaring <cite>self.plot_data</cite>, <cite>plot_data</cite> is given to the constructor of <cite>PlotData</cite> class.</p>
+<dl class="class">
+<dt id="DataAnalyzer.Data.cl_data.FileData.PlotData">
+<em class="property">class </em><code class="descname">PlotData</code><span class="sig-paren">(</span><em>data</em>, <em>plot</em>, <em>meta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/cl_data.html#FileData.PlotData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.cl_data.FileData.PlotData" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>PlotData</cite> only defines the <cite>__init__</cite> method to store Data, where the members <cite>self.Data</cite>, <cite>self.Plot</cite>
+and <cite>self.meta</cite> are declared.</p>
+<p><cite>self.Data</cite>’s keys are assigned dynamically, so the variable <cite>self.Data</cite> is a dictionary itself, that
+can be accessed with the keywords defined previously.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>dict</em>) – Data contains the actual Plot Data</td>
+</tr>
+</tbody>
+</table>
+<p>The same is true for <cite>self.Plot</cite>, where different Plot types can be defined. The dict’s values are defined
+as objects of the Figure class which then contains a list of all figure configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>plot</strong> (<em>dict</em>) – Plot contains the configuration of the plots</td>
+</tr>
+</tbody>
+</table>
+<p><cite>self.meta</cite> contains meta information like the time when the trace has been recorded. <cite>self.meta</cite> gets
+assigned to an object of the <cite>Meta</cite> dataclass.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>meta</strong> (<em>dict</em>) – meta contains meta information about the recorded Data</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="DataAnalyzer.Data.cl_data.FileData.PlotData.Data">
+<em class="property">class </em><code class="descname">Data</code><span class="sig-paren">(</span><em>values: list</em>, <em>name: str</em>, <em>unit: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/cl_data.html#FileData.PlotData.Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.cl_data.FileData.PlotData.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Data</cite> is the class, where the actual plotting Data can be stored in.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="DataAnalyzer.Data.cl_data.FileData.PlotData.Figure">
+<em class="property">class </em><code class="descname">Figure</code><span class="sig-paren">(</span><em>figure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/cl_data.html#FileData.PlotData.Figure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.cl_data.FileData.PlotData.Figure" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Figure</cite> defines the <cite>__init__</cite> method, as well as the <cite>FigConfig</cite> class.
+The figure configuration can be accessed with <strong>plot_data.Plot[…].figure[n]</strong></p>
+<p>The amount of figures can vary, therefore <cite>self.figure</cite> gets assigned as a list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>figure</strong> – a dictionary with the figure config as its value</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="DataAnalyzer.Data.cl_data.FileData.PlotData.Figure.FigConfig">
+<em class="property">class </em><code class="descname">FigConfig</code><span class="sig-paren">(</span><em>subplot</em>, <em>subplot_rows: int = 1</em>, <em>subplot_cols: int = 1</em>, <em>constrained_layout: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/cl_data.html#FileData.PlotData.Figure.FigConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.cl_data.FileData.PlotData.Figure.FigConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>FigConfig</cite> only defines an <cite>__init__</cite> method. It takes the actual figure configuration.
+Besides the figure config, it contains the subplots and their configuration.
+It is possible to create custom Plot types, therefore the configuration of the subplots is outsourced
+to the <cite>PlotConfig</cite> package. <cite>FigConfig</cite> only imports those classes dynamically and creates objects
+with the according values.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Custom plotting types can be added</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">individual subplots configs are saved dynamically as Plot type objects!</p>
+</div>
+<p><cite>__init__</cite> defines the figure configuration:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>subplot</strong> (<em>list</em>) – list of subplot configs</li>
+<li><strong>subplot_rows</strong> (<em>int</em>) – number of subplots in y-dimension</li>
+<li><strong>subplot_cols</strong> (<em>int</em>) – number of subplots in x-dimension</li>
+<li><strong>constrained_layout</strong> (<em>bool</em>) – automatic, ideal space organization</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="DataAnalyzer.Data.cl_data.FileData.PlotData.Meta">
+<em class="property">class </em><code class="descname">Meta</code><span class="sig-paren">(</span><em>timestamp_last_sample: float</em>, <em>location: str</em>, <em>machine: str</em>, <em>worker: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/cl_data.html#FileData.PlotData.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.cl_data.FileData.PlotData.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>Meta</cite> is the class, where meta information can be stored in.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-DataAnalyzer.Data.data">
+<span id="dataanalyzer-data-data-module"></span><h2>DataAnalyzer.Data.data module<a class="headerlink" href="#module-DataAnalyzer.Data.data" title="Permalink to this headline">¶</a></h2>
+<p>This module creates a mat file from the dictionary specified in it.</p>
+<dl class="function">
+<dt id="DataAnalyzer.Data.data.save_mat">
+<code class="descclassname">DataAnalyzer.Data.data.</code><code class="descname">save_mat</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/DataAnalyzer/Data/data.html#save_mat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#DataAnalyzer.Data.data.save_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function utilizes the <cite>scipy.io.savemat()</cite> method to create mat files</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-DataAnalyzer.Data">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-DataAnalyzer.Data" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="DataAnalyzer.Functions.html" class="btn btn-neutral float-right" title="DataAnalyzer.Functions package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="DataAnalyzer.html" class="btn btn-neutral float-left" title="DataAnalyzer package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Julian Zeitler
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

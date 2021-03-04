@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>DataAnalyzer.PlotConfig.plt_Base &mdash; Data Analyzer  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Data Analyzer
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">ILLU5000-GUI</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Data Analyzer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>DataAnalyzer.PlotConfig.plt_Base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for DataAnalyzer.PlotConfig.plt_Base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;The Base module is the parent class of all PlotTypes that are specified in PlotTypes module.&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Base"><a class="viewcode-back" href="../../../DataAnalyzer.PlotConfig.html#DataAnalyzer.PlotConfig.plt_Base.Base">[docs]</a><span class="k">class</span> <span class="nc">Base</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;This class defines the init method, the most basic configuration can be stored here.</span>
+<span class="sd">    For basic 2-dimensional plots, the Plot method is specified in `TwoD.plot_TwoD.TwoD.Plot()`.</span>
+<span class="sd">    For further specification, `Plot()` calls (if it exists) the `plot_specific` method,</span>
+<span class="sd">    which can be defined in every Plot type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">plots</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+                 <span class="n">x_label</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span>
+                 <span class="n">y_label</span><span class="o">=</span><span class="s1">&#39;Y-Axis&#39;</span><span class="p">,</span>
+                 <span class="n">legend</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
+                 <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;LinLin&#39;</span><span class="p">,</span>
+                 <span class="n">regression</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; The basic subplot config gets stored here.</span>
+
+<span class="sd">        :param plots: Name of the plots that are in the subplot</span>
+<span class="sd">        :type plots: list</span>
+<span class="sd">        :param title: subplot title</span>
+<span class="sd">        :type title: str</span>
+<span class="sd">        :param x_label: x_label</span>
+<span class="sd">        :type x_label: str</span>
+<span class="sd">        :param y_label: y_label</span>
+<span class="sd">        :type y_label: str</span>
+<span class="sd">        :param legend: legend location (upper left, lower right, ...)</span>
+<span class="sd">        :type legend: str</span>
+<span class="sd">        :param grid: toggle grid</span>
+<span class="sd">        :type grid: bool</span>
+<span class="sd">        :param plot_type: name of class `Plot()` should be inherited from</span>
+<span class="sd">            (it is sufficient to write the name without *plt_*)</span>
+<span class="sd">        :type plot_type: str</span>
+<span class="sd">        :param regression: optionally add regression type</span>
+<span class="sd">        :type regression: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">plots</span> <span class="o">=</span> <span class="n">plots</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_label</span> <span class="o">=</span> <span class="n">x_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span> <span class="o">=</span> <span class="n">y_label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legend</span> <span class="o">=</span> <span class="n">legend</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_type</span> <span class="o">=</span> <span class="n">plot_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">regression</span> <span class="o">=</span> <span class="n">regression</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Julian Zeitler
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
