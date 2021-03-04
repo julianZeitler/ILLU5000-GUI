@@ -21,13 +21,13 @@ def main():
 
     args = parser.parse_args()
 
+    if args.create:
+        save_mat('Data.mat')
+
     plot = Plot(args.file, args.key)
 
     if not args.test:
         show()
-
-    if args.create:
-        save_mat('Data.mat')
 
 
 if __name__ == '__main__':
