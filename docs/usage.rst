@@ -40,3 +40,8 @@ The data for the file is provided by a dictionary specified in the `DataAnalyzer
 
 `-t` / `--test_` is used for testing purposes, when a graphical output is unwanted.
 With the argument, no graphical output will be generated.
+
+Matlab Data Files
+------------------
+
+See how to create the files :ref:`here <data_files>`

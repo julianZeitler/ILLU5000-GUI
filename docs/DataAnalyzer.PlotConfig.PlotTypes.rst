@@ -31,6 +31,7 @@ DataAnalyzer.PlotConfig.PlotTypes.plt\_LinLog module
 
 DataAnalyzer.PlotConfig.PlotTypes.plt\_Polar module
 ---------------------------------------------------
+.. _plt_polar:
 
 .. automodule:: DataAnalyzer.PlotConfig.PlotTypes.plt_Polar
     :members:
