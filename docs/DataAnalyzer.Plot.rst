@@ -6,9 +6,9 @@ Submodules
 
 DataAnalyzer.Plot.cl\_plot module
 ---------------------------------
+.. _cl_plot:
 
 .. automodule:: DataAnalyzer.Plot.cl_plot
-.. _cl_plot:
     :members:
     :undoc-members:
 
