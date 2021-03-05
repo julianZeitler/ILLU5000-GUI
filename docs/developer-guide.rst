@@ -85,8 +85,20 @@ one of these axes over each other. It is required to define *name* and *unit* to
 giving them is also required. In the above example only one key (*raw*) is given. It is however possible to specify more
 than one. Inside this key, the different figures can be defined. The figure configs are stored inside a list, so the
 figures can later be indexed correctly. This list is a list of dictionaries, where each dictionary represents the
-configuration for a figure. Inside those dictionaries it is required to specify the *subplots* key, which is a again a
-list of dictionaries, where each dictionary represents a subplot. For the subplots it is only required to set the
+configuration for a figure.
+
+.. code-block:: python
+
+    [{fig1}, {fig2}, {fig3}, ...]
+
+Inside those dictionaries it is required to specify the *subplots* key, which is a again a
+list of dictionaries, where each dictionary represents a subplot.
+
+.. code-block:: python
+
+    [{sp1}, {sp2}, {sp3}, ...]
+
+For the subplots it is only required to set the
 *plots* key, which specifies which axes should be plotted over each other. Normally this has to be a two dimensional
 list, that can contain as many plots as liked. Each item of the list has to be a list with two items.
 
