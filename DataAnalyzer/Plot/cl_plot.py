@@ -39,10 +39,11 @@ class Plot:
         self.figure = [self.Subplot(self._create_figures(fig, self.data)) for fig in self.plot[key].figure]
 
         # self.ax_list contains the ax objects for every subplot that is linked
-        self.ax_list = [self.figure[link[0]].subplot[link[1]] for link in self.plot[key].linkaxes]
+        if self.plot[key].linkaxes:
+            self.ax_list = [self.figure[link[0]].subplot[link[1]] for link in self.plot[key].linkaxes]
 
-        self._linkaxes()
-        self._auto_zoom()
+            self._linkaxes()
+            self._auto_zoom()
 
     def _linkaxes(self):
         """links all axes in `self.ax_list`"""
@@ -55,8 +56,7 @@ class Plot:
 
     @staticmethod
     def _create_figures(fig_config, data):
-        """
-        _create_figures is a private method, which -as the name suggests- creates the figure instances.
+        """_create_figures is a private method, which -as the name suggests- creates the figure instances.
 
         :param fig_config: figure configuration stored in file_data.plot_data.Plot[...].figure[...]
         :param data: the actual plotting Data

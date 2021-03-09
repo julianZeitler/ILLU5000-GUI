@@ -100,6 +100,8 @@ class FileData:
                 for key, val in figure.items():
                     if key == 'figure':
                         # the configuration is a list
+                        if type(val) != list:
+                            val = [val]
                         for fig in val:
                             # the config of every figure is passed to FigConfig
                             self.figure.append(self.FigConfig(**fig))
@@ -144,7 +146,7 @@ class FileData:
                     self.constrained_layout = constrained_layout
 
                     # If subplot only contains one element, the parenthesis get removed so they get added manually
-                    if type(subplot) == dict:
+                    if type(subplot) != list:
                         subplot = [subplot]
 
                     # the subplots are stored in self.subplot

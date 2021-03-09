@@ -30,4 +30,4 @@ Polar plots and histograms.
 
     *Example figure 4 histogram*
 
-Additional plot types can easily implemented, see developer guide.
+Additional plot types can easily implemented, see :ref:`developer guide <developer>`.

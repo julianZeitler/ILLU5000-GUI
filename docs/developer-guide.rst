@@ -113,6 +113,7 @@ with the *plot_type* parameter.
 
 Creating Additional Plot Types
 -------------------------------
+.. _developer:
 
 Additional plot types can be added in the :ref:`DataAnalyzer.PlotConfig.PlotTypes <plottypes>`
 package. A plot type module must have the following syntax:
