@@ -9,9 +9,9 @@ class TwoD (Base):
             self.plots = [self.plots]
 
         for plot in self.plots:
-            ax.plot(asarray(data[plot[0].strip()].values),
-                    asarray(data[plot[1].strip()].values),
-                    label=data[plot[1].strip()].name)
+            ax.plot(asarray(data[plot[0].strip(' ')].values),
+                    asarray(data[plot[1].strip(' ')].values),
+                    label=data[plot[1].strip(' ')].name)
 
         ax.set_xlabel(self.x_label)
         ax.set_ylabel(self.y_label)
