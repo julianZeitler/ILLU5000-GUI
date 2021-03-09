@@ -17,12 +17,11 @@ meta.location = 'Deutschland, Oberkochen';
 meta.machine = 'some machine';
 meta.worker = 'Max Mustermann';
 
-subplot1.plots = [['x_data', 'y_data']];
+subplot1.plots = ['x_data'; 'y_data'];
 fig1.subplot = [subplot1];
 figure = [fig1];
 
 raw.figure = figure;
-raw.linkaxes = [[0, 0]];
 plot.raw = raw;
 
 
