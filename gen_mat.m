@@ -44,8 +44,7 @@ file_data = struct('plot_data', struct('data', struct('raw_force', struct('value
                                                                                                          'title', 'example of polar plot')]),
                                                                                struct('subplot_cols', 2,
                                                                                       'subplot', [struct('plots', hist,
-                                                                                                         'x_label', 'IQ')])]))))
-                                                                                                         'x_label', 'IQ')])]))))
+                                                                                                         'x_label', 'IQ',
                                                                                                          'plot_type', 'Hist',
                                                                                                          'title', 'example for histogram',
                                                                                                          'bins', 20,
@@ -55,4 +54,5 @@ file_data = struct('plot_data', struct('data', struct('raw_force', struct('value
                                                                                                          'plot_type', 'Hist',
                                                                                                          'title', 'second histogram',
                                                                                                          'bins', 50,
-                                                                                                         'x_label', 'IQ')])]))))
+                                                                                                         'x_label', 'IQ')])],
+                                                                    'linkaxes': [[0, 0], [0, 2], [1, 0]]))))
