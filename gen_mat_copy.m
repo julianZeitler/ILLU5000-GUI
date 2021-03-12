@@ -13,5 +13,10 @@ file_data = struct('plot_data', struct('data', struct('raw_force', struct('value
                                                       'raw_voltage', struct('values', raw_voltage, 'name', 'Raw Voltage', 'unit', 'V'),
                                                       'phi', struct('values', phi, 'name', 'Phi', 'unit', 'rad'),
                                                       'time', struct('values', time, 'name', 'time', 'unit', 's'),
-                                                      'hist', struct('values', x_hist, 'name', 'hist', 'unit', 'IQ'))))
+                                                      'hist', struct('values', x_hist, 'name', 'hist', 'unit', 'IQ')),
+
+                                       'meta', struct('timestamp_last_sample', 123,
+                                                      'location', 'Deutschland, Oberkochen',
+                                                      'machine', 'some machine',
+                                                      'worker', 'Max Mustermann')))
 save("-v6", "data.mat", "file_data");
