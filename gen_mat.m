@@ -56,3 +56,4 @@ file_data = struct('plot_data', struct('data', struct('raw_force', struct('value
                                                                                                          'bins', 50,
                                                                                                          'x_label', 'IQ')])],
                                                                     'linkaxes': [[0, 0], [0, 2], [1, 0]]))))
+save("-v6", "data.mat", "file_data");
