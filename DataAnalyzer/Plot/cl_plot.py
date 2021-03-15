@@ -36,19 +36,11 @@ class Plot:
 
         for figure in self.plot[key].figure:
             for subplot in figure.subplot:
-                try:
-                    x = subplot.x_label
-                    print('tryx')
-                except AttributeError:
+                if subplot.x_label == ' ':
                     subplot.x_label = self.data[subplot[0].plots[0][0]].unit
-                    print('exceptx')
 
-                try:
-                    y = subplot.y_label
-                    print('tryy')
-                except AttributeError:
+                if subplot.y_label == ' ':
                     subplot.y_label = self.data[subplot[0].plots[0][1]].unit
-                    print('excepty')
 
         # create list of figures, which can be accessed via
         # self.figure[i].subplot[i]
