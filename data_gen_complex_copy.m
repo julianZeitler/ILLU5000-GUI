@@ -19,9 +19,9 @@ plot_data.meta = struct('timestamp_last_sample', 123,
                         'machine', 'some machine',
                         'worker', 'Max Mustermann')
 
-plot_data.plot.raw.figure(1) = struct('subplot_cols', 2,
-                                      'subplot_rows', 2,
-                                      'subplot', {struct('plots', {{'time', 'raw_force'},
+plot_data.plot.raw.figure(1).subplot_cols = 2
+plot_data.plot.raw.figure(1).subplot_rows = 2
+plot_data.plot.raw.figure(1).subplot = {struct('plots', {{'time', 'raw_force'},
                                                                    {'time', 'current'}},
                                                          'x_label', 'X-Axis of plot 1',
                                                          'plot_type', 'LinLin',
@@ -31,7 +31,7 @@ plot_data.plot.raw.figure(1) = struct('subplot_cols', 2,
                                                          'plot_type', 'LinLog'),
                                                   struct('plots', {'time', 'raw_force'},
                                                          'grid', false),
-                                                  struct('plots', {'time', 'raw_voltage'})})
+                                                  struct('plots', {'time', 'raw_voltage'})}
 
 plot_data.plot.raw.figure(2) = struct('subplot_rows', 2,
                                        'subplot', {struct('plots', {'time', 'raw_voltage'}),
