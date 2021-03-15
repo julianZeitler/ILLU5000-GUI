@@ -46,7 +46,7 @@ class Plot:
                     try:
                         subplot.y_label = self.data[subplot.plots[0][1]].unit
                     except KeyError:
-                        subplot.x_label = self.data[subplot.plots[0]].unit
+                        subplot.x_label = self.data[subplot.plots[1]].unit
 
         # create list of figures, which can be accessed via
         # self.figure[i].subplot[i]
