@@ -15,7 +15,7 @@ class Hist(Base):
         :param args: standard conf
         :param kwargs: standard conf
         """
-        self.bins = bins
+        self.bins = int(bins)
         super().__init__(*args, **kwargs)
 
     def plot(self, ax, data):
