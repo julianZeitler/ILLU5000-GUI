@@ -37,10 +37,10 @@ class Plot:
         for figure in self.plot[key].figure:
             for subplot in figure.subplot:
                 if subplot.x_label == ' ':
-                    subplot.x_label = self.data[subplot[0].plots[0][0]].unit
+                    subplot.x_label = self.data[subplot.plots[0][0]].unit
 
                 if subplot.y_label == ' ':
-                    subplot.y_label = self.data[subplot[0].plots[0][1]].unit
+                    subplot.y_label = self.data[subplot.plots[0][1]].unit
 
         # create list of figures, which can be accessed via
         # self.figure[i].subplot[i]
