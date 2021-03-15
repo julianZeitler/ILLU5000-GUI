@@ -40,6 +40,7 @@ class Plot:
 
         # self.ax_list contains the ax objects for every subplot that is linked
         try:
+            print(self.plot[key].linkaxes)
             for link in self.plot[key].linkaxes:
                 link = int(link)
                 print(link)
