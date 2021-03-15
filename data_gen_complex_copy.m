@@ -21,7 +21,7 @@ plot_data.meta = struct('timestamp_last_sample', 123,
 
 plot_data.plot.raw.figure(1).subplot_cols = 2
 plot_data.plot.raw.figure(1).subplot_rows = 2
-plot_data.plot.raw.figure(1).subplot(1).plots = {{'time', 'raw_force'},
+plot_data.plot.raw.figure(1).subplot(1).plots = {{'time', 'raw_force'}
                                                  {'time', 'current'}}
 plot_data.plot.raw.figure(1).subplot(1).x_label = 'X-Axis of plot 1'
 plot_data.plot.raw.figure(1).subplot(1).plot_type = 'LinLin'
@@ -41,7 +41,7 @@ plot_data.plot.raw.figure(2).subplot(1).plots = {'time', 'raw_voltage'}
 plot_data.plot.raw.figure(2).subplot(2).plots = {'time', 'current'}
 plot_data.plot.raw.figure(2).subplot(2).regression = 'Root'
 
-plot_data.plot.raw.figure(3).subplot(1).plots = {'phi', 'time'},
+plot_data.plot.raw.figure(3).subplot(1).plots = {'phi', 'time'}
 plot_data.plot.raw.figure(3).subplot(1).plot_type = 'Polar'
 plot_data.plot.raw.figure(3).subplot(1).title = 'example of polar plot'
 
