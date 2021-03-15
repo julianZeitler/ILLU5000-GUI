@@ -41,7 +41,7 @@ plot_data.plot.raw.figure(2).subplot = {struct('plots', {'time', 'raw_voltage'})
 plot_data.plot.raw.figure(3).subplot = {struct('plots', {'phi', 'time'},
                                                           'plot_type', 'Polar',
                                                           'title', 'example of polar plot')}
-plot_data.plot.raw.figure(4).subplot_cols, 2
+plot_data.plot.raw.figure(4).subplot_cols = 2
 plot_data.plot.raw.figure(4).subplot = {struct('plots', {'hist'},
                                                           'x_label', 'IQ',
                                                           'plot_type', 'Hist',
