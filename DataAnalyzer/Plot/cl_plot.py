@@ -37,15 +37,15 @@ class Plot:
         for figure in self.plot[key].figure:
             for subplot in figure.subplot:
                 if subplot.x_label == ' ':
-                    if type(subplot.plots) == list and len(subplot.plots) == 2:
+                    try:
                         subplot.x_label = self.data[subplot.plots[0][0]].unit
-                    elif type(subplot.plots) == list and len(subplot.plots) == 1:
+                    except KeyError:
                         subplot.x_label = self.data[subplot.plots[0]].unit
 
                 if subplot.y_label == ' ':
-                    if type(subplot.plots) == list and len(subplot.plots) == 2:
+                    try:
                         subplot.y_label = self.data[subplot.plots[0][1]].unit
-                    elif type(subplot.plots) == list and len(subplot.plots) == 1:
+                    except KeyError:
                         subplot.x_label = self.data[subplot.plots[0]].unit
 
         # create list of figures, which can be accessed via
