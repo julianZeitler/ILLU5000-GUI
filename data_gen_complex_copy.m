@@ -19,7 +19,7 @@ plot_data.meta = struct('timestamp_last_sample', 123,
                         'machine', 'some machine',
                         'worker', 'Max Mustermann')
 
-plot_data.plot.raw.figure[1] = struct('subplot_cols', 2,
+plot_data.plot.raw.figure(1) = struct('subplot_cols', 2,
                                       'subplot_rows', 2,
                                       'subplot', {struct('plots', {{'time', 'raw_force'},
                                                                    {'time', 'current'}},
@@ -33,15 +33,15 @@ plot_data.plot.raw.figure[1] = struct('subplot_cols', 2,
                                                          'grid', false),
                                                   struct('plots', {'time', 'raw_voltage'})})
 
-plot_data.plot.raw.figure[2] = struct('subplot_rows', 2,
+plot_data.plot.raw.figure(2) = struct('subplot_rows', 2,
                                        'subplot', {struct('plots', {'time', 'raw_voltage'}),
                                                    struct('plots', {'time', 'current'},
                                                           'regression', 'Root')})
 
-plot_data.plot.raw.figure[3] = struct('subplot', {struct('plots', {'phi', 'time'},
+plot_data.plot.raw.figure(3) = struct('subplot', {struct('plots', {'phi', 'time'},
                                                           'plot_type', 'Polar',
                                                           'title', 'example of polar plot')})
-plot_data.plot.raw.figure[4] = struct('subplot_cols', 2,
+plot_data.plot.raw.figure(4) = struct('subplot_cols', 2,
                                        'subplot', {struct('plots', {'hist'},
                                                           'x_label', 'IQ',
                                                           'plot_type', 'Hist',
