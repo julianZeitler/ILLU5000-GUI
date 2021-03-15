@@ -37,14 +37,14 @@ class Plot:
         for figure in self.plot[key].figure:
             for subplot in figure.subplot:
                 try:
-                    subplot.x_label
+                    x = subplot.x_label
                     print('tryx')
                 except AttributeError:
                     subplot.x_label = self.data[subplot[0].plots[0][0]].unit
                     print('exceptx')
 
                 try:
-                    subplot.y_label
+                    y = subplot.y_label
                     print('tryy')
                 except AttributeError:
                     subplot.y_label = self.data[subplot[0].plots[0][1]].unit
