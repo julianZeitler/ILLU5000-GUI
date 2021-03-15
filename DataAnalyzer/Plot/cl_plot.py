@@ -34,14 +34,24 @@ class Plot:
         self.plot = file_data.plot_data.plot    # dictionary
         self.meta = file_data.plot_data.meta      # object
 
+        for figure in file_data.plot_data.plot.figure:
+            for subplot in figure:
+                try:
+                    subplot.x_label
+                except AttributeError:
+                    subplot.x_label = self.data[subplot[0].plots[0][0]].unit
+
+                try:
+                    subplot.y_label
+                except AttributeError:
+                    subplot.y_label = self.data[subplot[0].plots[0][1]].unit
+
         # create list of figures, which can be accessed via
         # self.figure[i].subplot[i]
         self.figure = [self.Subplot(self._create_figures(fig, self.data)) for fig in self.plot[key].figure]
 
         # self.ax_list contains the ax objects for every subplot that is linked
         try:
-            for link in self.plot[key].linkaxes:
-                print(int(link[0]), int(link[1]))
             self.ax_list = [self.figure[int(link[0])].subplot[int(link[1])] for link in self.plot[key].linkaxes]
 
             self._linkaxes()
