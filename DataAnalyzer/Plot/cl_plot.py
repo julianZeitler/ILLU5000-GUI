@@ -82,8 +82,8 @@ class Plot:
         :param data: the actual plotting Data
         :return: a list of axes objects
         """
-        fig, axs = subplots(ncols=fig_config.subplot_cols,
-                            nrows=fig_config.subplot_rows,
+        fig, axs = subplots(ncols=int(fig_config.subplot_cols),
+                            nrows=int(fig_config.subplot_rows),
                             constrained_layout=fig_config.constrained_layout)
 
         # convert multi-dim numpy array to single-dim python list
