@@ -1,4 +1,4 @@
-time = [0 : 999] / 1000;
+
 phi = 12 * pi * [0 : 999] / 1000;
 mu = 100;
 sigma = 15;
@@ -18,5 +18,43 @@ plot_data = struct('data', struct('raw_force', struct('values', raw_force, 'name
                    'meta', struct('timestamp_last_sample', 123,
                                   'location', 'Deutschland, Oberkochen',
                                   'machine', 'some machine',
-                                  'worker', 'Max Mustermann'))
-save("-v6", "data.mat", "plot_data");
+                                  'worker', 'Max Mustermann'),
+
+                   'plot', struct('raw', struct('figure', {struct('subplot_cols', 2,
+                                                                  'subplot_rows', 2,
+                                                                  'subplot', {struct('plots', {{'time', 'raw_force'},
+                                                                                               {'time', 'current'}},
+                                                                                     'x_label', 'X-Axis of plot 1',
+                                                                                     'plot_type', 'LinLin',
+                                                                                     'title', 'subplot 1',
+                                                                                     'legend', 'lower left'),
+                                                                              struct('plots', {'time', 'raw_voltage'},
+                                                                                     'plot_type', 'LinLog'),
+                                                                              struct('plots', {'time', 'raw_force'},
+                                                                                     'grid', false),
+                                                                              struct('plots', {'time', 'raw_voltage'})}),
+
+                                                           struct('subplot_rows', 2,
+                                                                  'subplot', {struct('plots', {'time', 'raw_voltage'}),
+                                                                              struct('plots', {'time', 'current'},
+                                                                                     'regression', 'Root')}),
+
+                                                           struct('subplot', {struct('plots', {'phi', 'time'},
+                                                                                     'plot_type', 'Polar',
+                                                                                     'title', 'example of polar plot')}),
+                                                           struct('subplot_cols', 2,
+                                                                  'subplot', {struct('plots', {'hist'},
+                                                                                     'x_label', 'IQ',
+                                                                                     'plot_type', 'Hist',
+                                                                                     'title', 'example for histogram',
+                                                                                     'bins', 20,
+                                                                                     'x_label', 'IQ'),
+
+                                                                              struct('plots', {'hist'},
+                                                                                     'plot_type', 'Hist',
+                                                                                     'title', 'second histogram',
+                                                                                     'bins', 50,
+                                                                                     'x_label', 'IQ')})},
+                                                'linkaxes', {{0, 0}, {0, 2}, {1, 0}})))
+
+save('-v6', 'data.mat', 'plot_data');

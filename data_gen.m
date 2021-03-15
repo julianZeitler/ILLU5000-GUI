@@ -1,32 +1,19 @@
-xdata = 12 * pi * [0 : 999] / 1000;
-ydata = sin(xdata);
+phi = 12 * pi * [0 : 999] / 1000;
+sinus = sin(phi);
 
-x_data.values = xdata;
-x_data.name = 'x_data';
-x_data.unit = 's';
+plot_data.data.phi.values = phi;
+plot_data.data.phi.name = 'phi';
+plot_data.data.phi.unit = 'rad';
 
-y_data.values = ydata;
-y_data.name = 'y_data';
-y_data.unit = 'A';
+plot_data.data.sinus.values = sinus;
+plot_data.data.sinus.name = 'sinus';
+plot_data.data.sinus.unit = 'm';
 
-data.x_data = x_data;
-data.y_data = y_data;
+plot_data.meta.timestamp_last_sample = 123;
+plot_data.meta.location = 'Deutschland, Oberkochen';
+plot_data.meta.machine = 'some machine';
+plot_data.meta.worker = 'Max Mustermann';
 
-meta.timestamp_last_sample = 123;
-meta.location = 'Deutschland, Oberkochen';
-meta.machine = 'some machine';
-meta.worker = 'Max Mustermann';
+plot_data.plot.trig.figure{1}.subplot{1}.plots = {{'phi', 'sinus'}};
 
-subplot1.plots = ["x_data"; "y_data"];
-fig1.subplot = [subplot1];
-figure = [fig1];
-
-raw.figure = figure;
-plot.raw = raw;
-
-
-plot_data.data = data;
-plot_data.meta = meta;
-plot_data.plot = plot;
-
-save("-v6", "data.mat", "plot_data");
+save('-v6', 'data.mat', 'plot_data');
