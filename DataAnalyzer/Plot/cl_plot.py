@@ -42,7 +42,7 @@ class Plot:
                     except KeyError:
                         subplot.x_label = self.data[subplot.plots[0]].unit
                     except IndexError:
-                        subplot.x_label = self.data[subplot.plots[0]].unit
+                        pass
 
                 if subplot.y_label == ' ':
                     try:
@@ -50,7 +50,7 @@ class Plot:
                     except KeyError:
                         subplot.y_label = self.data[subplot.plots[1]].unit
                     except IndexError:
-                        subplot.y_label = self.data[subplot.plots[1]].unit
+                        pass
 
         # create list of figures, which can be accessed via
         # self.figure[i].subplot[i]
