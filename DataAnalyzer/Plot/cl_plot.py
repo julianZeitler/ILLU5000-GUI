@@ -34,7 +34,7 @@ class Plot:
         self.plot = file_data.plot_data.plot    # dictionary
         self.meta = file_data.plot_data.meta      # object
 
-        for figure in file_data.plot_data.plot.figure:
+        for figure in self.plot.figure:
             for subplot in figure:
                 try:
                     subplot.x_label
