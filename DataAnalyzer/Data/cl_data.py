@@ -104,6 +104,7 @@ class FileData:
                             val = [val]
                         for fig in val:
                             print(fig)
+                            print('--------------')
                             # the config of every figure is passed to FigConfig
                             self.figure.append(self.FigConfig(**fig))
                     elif key == 'linkaxes':
