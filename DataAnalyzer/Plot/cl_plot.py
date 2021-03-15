@@ -41,11 +41,15 @@ class Plot:
                         subplot.x_label = self.data[subplot.plots[0][0]].unit
                     except KeyError:
                         subplot.x_label = self.data[subplot.plots[0]].unit
+                    except IndexError:
+                        subplot.x_label = self.data[subplot.plots[0]].unit
 
                 if subplot.y_label == ' ':
                     try:
                         subplot.y_label = self.data[subplot.plots[0][1]].unit
                     except KeyError:
+                        subplot.y_label = self.data[subplot.plots[1]].unit
+                    except IndexError:
                         subplot.y_label = self.data[subplot.plots[1]].unit
 
         # create list of figures, which can be accessed via
