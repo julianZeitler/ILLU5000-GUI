@@ -33,16 +33,16 @@ plot_data.plot.raw.figure(1).subplot = {struct('plots', {{'time', 'raw_force'},
                                                          'grid', false),
                                                   struct('plots', {'time', 'raw_voltage'})}
 
-plot_data.plot.raw.figure(2) = struct('subplot_rows', 2,
-                                       'subplot', {struct('plots', {'time', 'raw_voltage'}),
+plot_data.plot.raw.figure(2).subplot_rows = 2
+plot_data.plot.raw.figure(2).subplot = {struct('plots', {'time', 'raw_voltage'}),
                                                    struct('plots', {'time', 'current'},
-                                                          'regression', 'Root')})
+                                                          'regression', 'Root')}
 
-plot_data.plot.raw.figure(3) = struct('subplot', {struct('plots', {'phi', 'time'},
+plot_data.plot.raw.figure(3).subplot = {struct('plots', {'phi', 'time'},
                                                           'plot_type', 'Polar',
-                                                          'title', 'example of polar plot')})
-plot_data.plot.raw.figure(4) = struct('subplot_cols', 2,
-                                       'subplot', {struct('plots', {'hist'},
+                                                          'title', 'example of polar plot')}
+plot_data.plot.raw.figure(4).subplot_cols, 2
+plot_data.plot.raw.figure(4).subplot = {struct('plots', {'hist'},
                                                           'x_label', 'IQ',
                                                           'plot_type', 'Hist',
                                                           'title', 'example for histogram',
@@ -53,7 +53,7 @@ plot_data.plot.raw.figure(4) = struct('subplot_cols', 2,
                                                           'plot_type', 'Hist',
                                                           'title', 'second histogram',
                                                           'bins', 50,
-                                                          'x_label', 'IQ')})
+                                                          'x_label', 'IQ')}
 plot_data.plot.raw.linkaxes = {{0, 0}, {0, 2}, {1, 0}}
 
 save('-v6', 'data.mat', 'plot_data');
