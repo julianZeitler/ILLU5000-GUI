@@ -2,6 +2,7 @@ phi = 12 * pi * [0 : 999] / 1000;
 mu = 100;
 sigma = 15;
 
+time = [0 : 999] / 1000;
 raw_force = tan(time);
 current = sqrt(time);
 raw_voltage = log(time);
