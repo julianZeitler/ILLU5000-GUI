@@ -7,17 +7,34 @@ current = sqrt(time);
 raw_voltage = log(time);
 x_hist = mu + sigma * randi(10000);
 
-plot_data.data = struct('raw_force', struct('values', raw_force, 'name', 'Raw Force', 'unit', 'N'),
-                        'current', struct('values', current, 'name', 'Current', 'unit', 'A'),
-                        'raw_voltage', struct('values', raw_voltage, 'name', 'Raw Voltage', 'unit', 'V'),
-                        'phi', struct('values', phi, 'name', 'Phi', 'unit', 'rad'),
-                        'time', struct('values', time, 'name', 'time', 'unit', 's'),
-                        'hist', struct('values', x_hist, 'name', 'hist', 'unit', 'IQ'))
+plot_data.data.raw_force.values = raw_force
+plot_data.data.raw_force.name = 'Raw Force'
+plot_data.data.raw_force.unit = 'N'
 
-plot_data.meta = struct('timestamp_last_sample', 123,
-                        'location', 'Deutschland, Oberkochen',
-                        'machine', 'some machine',
-                        'worker', 'Max Mustermann')
+plot_data.data.current.values = current
+plot_data.data.current.name = 'Current'
+plot_data.data.current.unit = 'A'
+
+plot_data.data.raw_voltage.values = raw_voltage
+plot_data.data.raw_voltage.name = 'Raw Voltage'
+plot_data.data.raw_voltage.unit = 'V'
+
+plot_data.data.phi.values = phi
+plot_data.data.phi.name = 'phi'
+plot_data.data.phi.unit = 'rad'
+
+plot_data.data.time.values = time
+plot_data.data.time.name = 'time'
+plot_data.data.time.unit = 's'
+
+plot_data.data.hist.values = x_hist
+plot_data.data.hist.name = 'hist'
+plot_data.data.hist.unit = 'IQ'
+
+plot_data.meta.timestamp_last_sample = 123
+plot_data.meta.location = 'Deutschland, Oberkochen'
+plot_data.meta.machine = 'some machine'
+plot_data.meta.worker = 'Max Mustermann'
 
 plot_data.plot.raw.figure{1}.subplot_cols = 2
 plot_data.plot.raw.figure{1}.subplot_rows = 2

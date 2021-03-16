@@ -1,15 +1,15 @@
 import numpy as np
 from scipy.io import savemat
 
-xdata = np.linspace(0.1, 37.1, 1000)
-ydata = np.sin(xdata)
+phi = np.linspace(0.1, 37.1, 1000)
+sinus = np.sin(phi)
 
-dic = {'plot_data': {'data': {'x_data': {'values': xdata, 'name': 'x_data', 'unit': 's'},
-                              'y_data': {'values': ydata, 'name': 'y_data', 'unit': 'A'}},
+dic = {'plot_data': {'data': {'phi': {'values': phi, 'name': 'x_data', 'unit': 'rad'},
+                              'sinus': {'values': sinus, 'name': 'y_data', 'unit': 'm'}},
                      'meta': {'timestamp_last_sample': 123,
                               'location': 'Deutschland, Oberkochen',
                               'machine': 'some machine',
                               'worker': 'Max Mustermann'},
-                     'plot': {'raw': {'figure': [{'subplot': [{'plots': [['x_data', 'y_data']]}]}]}}}}
+                     'plot': {'trig': {'figure': [{'subplot': [{'plots': [['phi', 'sinus']]}]}]}}}}
 
 savemat('data.mat', dic)
