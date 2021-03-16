@@ -38,17 +38,17 @@ class Plot:
             for subplot in figure.subplot:
                 if subplot.x_label == ' ':
                     try:
-                        subplot.x_label = self.data[subplot.plots[0][0]].unit
+                        subplot.x_label = self.data[subplot.plots[0][0].strip()].unit
                     except KeyError:
-                        subplot.x_label = self.data[subplot.plots[0]].unit
+                        subplot.x_label = self.data[subplot.plots[0].strip()].unit
                     except IndexError:
                         pass
 
                 if subplot.y_label == ' ':
                     try:
-                        subplot.y_label = self.data[subplot.plots[0][1]].unit
+                        subplot.y_label = self.data[subplot.plots[0][1].strip()].unit
                     except KeyError:
-                        subplot.y_label = self.data[subplot.plots[1]].unit
+                        subplot.y_label = self.data[subplot.plots[1].strip()].unit
                     except IndexError:
                         pass
 
