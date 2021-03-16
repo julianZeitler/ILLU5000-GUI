@@ -6,7 +6,7 @@ time = [0 : 999] / 1000;
 raw_force = tan(time);
 current = sqrt(time);
 raw_voltage = log(time);
-x_hist = mu + sigma * randn(100)
+x_hist = mu + sigma * randn(100);
 
 plot_data.data.raw_force.values = raw_force;
 plot_data.data.raw_force.name = 'Raw Force';
