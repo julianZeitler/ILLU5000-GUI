@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.io import savemat
 
-phi = np.linspace(0.1, 37.1, 1000)
+phi = np.linspace(0, 37, 1000)
 sinus = np.sin(phi)
 
 dic = {'plot_data': {'data': {'phi': {'values': phi, 'name': 'x_data', 'unit': 'rad'},
