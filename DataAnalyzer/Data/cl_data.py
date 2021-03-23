@@ -31,9 +31,9 @@ class FileData:
 
         When declaring `self.plot_data`, `plot_data` is given to the constructor of `PlotData` class.
         """
-        self.header = __header__
-        self.version = __version__
-        self.globals = __globals__
+        self.__header__ = __header__
+        self.__version__ = __version__
+        self.__globals__ = __globals__
 
         # map the trace dictionary on the Trace class
         self.plot_data = self.PlotData(**plot_data)

@@ -4,6 +4,7 @@ from DataAnalyzer.Functions.func_import import dyn_import_cls
 
 class LinLin(TwoD):
     def plot_specific(self, ax):
+        print(self.regression)
         cls = dyn_import_cls('DataAnalyzer.Plot.cl_regression', self.regression)
         reg = cls(ax)
         reg.fit()

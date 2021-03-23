@@ -1,19 +1,21 @@
 from DataAnalyzer.Data.cl_data import FileData
 from DataAnalyzer.Functions.func_mat import save
+from DataAnalyzer.Plot.cl_plot import Plot
 
 import numpy as np
+from matplotlib.pyplot import show
 
 t_incremental = np.linspace(0.1, 20.1, 200)
 rad = np.linspace(0, 2, 200)
 theta = 2 * np.pi * rad
 mu, sigma = 100, 15
 
-raw_force = np.tan(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
+raw_current = np.tan(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
 current = np.sqrt(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
 raw_voltage = np.log(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
 x_hist = mu + sigma * np.random.randn(10000)
 
-d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw Force', 'unit': 'N'},
+d1 = {'plot_data': {'data': {'raw_current': {'values': raw_current, 'name': 'Raw Current', 'unit': 'A'},
                              'current': {'values': current, 'name': 'Current', 'unit': 'A'},
                              'raw_voltage': {'values': raw_voltage, 'name': 'Raw Voltage', 'unit': 'V'},
                              'rad': {'values': rad, 'name': 'rad', 'unit': 'm'},
@@ -27,7 +29,7 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                              'worker': 'Max Mustermann'},
                     'plot': {'raw': {'figure': [{'subplot_cols': 2,
                                                  'subplot_rows': 2,
-                                                 'subplot': [{'plots': np.array([['t_incremental', 'raw_force'],
+                                                 'subplot': [{'plots': np.array([['t_incremental', 'raw_current'],
                                                                                  ['t_incremental', 'current']],
                                                                                 dtype=object),
                                                               'x_label': 'X-Axis of Plot 1',
@@ -38,7 +40,7 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                                                              {'plots': np.array([['t_incremental', 'raw_voltage']],
                                                                                 dtype=object),
                                                               'plot_type': 'LinLog'},
-                                                             {'plots': np.array([['t_incremental', 'raw_force']],
+                                                             {'plots': np.array([['t_incremental', 'raw_current']],
                                                                                 dtype=object),
                                                               'grid': False},
                                                              {'plots': np.array([['t_incremental', 'raw_voltage']],
@@ -72,4 +74,7 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
 
 file_data = FileData(**d1)
 
-print(save(file_data, 'data.mat'))
+save(file_data, 'data.mat')
+
+Plot('data.mat', 'raw')
+show()

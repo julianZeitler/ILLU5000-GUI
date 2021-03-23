@@ -30,9 +30,9 @@ class Plot:
         else:
             raise TypeError('Data was not of type string nor object')
 
-        self.data = file_data.plot_data.data      # dictionary
+        self.data = file_data.plot_data.data    # dictionary
         self.plot = file_data.plot_data.plot    # dictionary
-        self.meta = file_data.plot_data.meta      # object
+        self.meta = file_data.plot_data.meta    # object
 
         for figure in self.plot[key].figure:
             for subplot in figure.subplot:
@@ -51,6 +51,15 @@ class Plot:
                         subplot.y_label = self.data[subplot.plots[1].strip()].unit
                     except IndexError:
                         pass
+
+                if len(subplot.plots) > 1 and type(subplot.plots[0]) == list:
+                    for i in range(len(subplot.plots)):
+                        if i != 1:
+                            print(subplot.plots)
+                            if self.data[subplot.plots[i-1][0]].unit != self.data[subplot.plots[i][0]].unit:
+                                raise ValueError('One Subplot must have the same unit on X-Axis')
+                            if self.data[subplot.plots[i-1][1]].unit != self.data[subplot.plots[i][1]].unit:
+                                raise ValueError('One Subplot must have the same unit on Y-Axis')
 
         # create list of figures, which can be accessed via
         # self.figure[i].subplot[i]
