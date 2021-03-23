@@ -59,7 +59,7 @@ def save(object, file: str = None, names=['PlotData']):
             for i in range(len(val)):
                 try:
                     names = _inner_classes(val[i])
-                    val[i] = save(vat()[i], names=names)
+                    val[i] = save(val[i], names=names)
                 except AttributeError:
                     pass
 
