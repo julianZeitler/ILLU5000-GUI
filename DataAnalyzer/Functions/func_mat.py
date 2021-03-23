@@ -58,7 +58,6 @@ def save(object, file: str = None, names=['PlotData']):
         elif isinstance(val, list):
             for i in range(len(val)):
                 names = _inner_classes(val[i])
-                print(val[i])
                 val[i] = save(val[i], names=names)
 
         elif is_dataclass(val):
