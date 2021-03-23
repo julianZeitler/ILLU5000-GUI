@@ -57,11 +57,9 @@ def save(object, file: str = None, names=['PlotData']):
         # handle lists
         elif isinstance(val, list):
             for i in range(len(val)):
-                try:
-                    names = _inner_classes(val[i])
+                names = _inner_classes(val[i])
+                if names:
                     val[i] = save(val[i], names=names)
-                except AttributeError:
-                    pass
 
         elif is_dataclass(val):
             dic[key] = asdict(val)
