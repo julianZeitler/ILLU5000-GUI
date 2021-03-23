@@ -27,8 +27,8 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
                              'worker': 'Max Mustermann'},
                     'plot': {'raw': {'figure': [{'subplot_cols': 2,
                                                  'subplot_rows': 2,
-                                                 'subplot': [{'plots': [['t_incremental', 'raw_force'],
-                                                                        ['t_incremental', 'current']],
+                                                 'subplot': [{'plots': [np.array(['t_incremental', 'raw_force']),
+                                                                        np.array(['t_incremental', 'current'])],
                                                               'x_label': 'X-Axis of Plot 1',
                                                               'plot_type': 'LinLin',
                                                               'title': 'subplot 1',
@@ -65,4 +65,4 @@ d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw For
 
 file_data = FileData(**d1)
 
-save(file_data, 'data.mat')
+print(save(file_data, 'data.mat'))
