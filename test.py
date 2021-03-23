@@ -1,6 +1,17 @@
 from DataAnalyzer.Data.cl_data import FileData
 from DataAnalyzer.Functions.func_mat import save
 
+import numpy as np
+
+t_incremental = np.linspace(0.1, 20.1, 200)
+rad = np.linspace(0, 2, 200)
+theta = 2 * np.pi * rad
+mu, sigma = 100, 15
+
+raw_force = np.tan(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
+current = np.sqrt(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
+raw_voltage = np.log(t_incremental) * ((np.random.rand(1, len(t_incremental)) + 0.5) * 0.5)
+x_hist = mu + sigma * np.random.randn(10000)
 
 d1 = {'plot_data': {'data': {'raw_force': {'values': raw_force, 'name': 'Raw Force', 'unit': 'N'},
                              'current': {'values': current, 'name': 'Current', 'unit': 'A'},
