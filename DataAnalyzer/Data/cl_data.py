@@ -15,7 +15,7 @@ class FileData:
        This tree is build upon nested classes and not inheritance!
 
     """
-    def __init__(self, __header__: bytes, __version__: str, __globals__: list, plot_data):
+    def __init__(self, plot_data, __header__: bytes = b'PlotData', __version__: str = '6', __globals__: list = []):
         """ When creating mat files, the variables `__header__`, `__version__` and `__globals__` always get set. Because
         double underscores are Python specific syntax these variables get stored without them. `plot_data` is read
         from the mat file as a dictionary and contains the actual configuration and plotting Data.
