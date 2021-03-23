@@ -56,9 +56,9 @@ class Plot:
                     for i in range(len(subplot.plots)):
                         if i != 1:
                             print(subplot.plots)
-                            if self.data[subplot.plots[i-1][0]].unit != self.data[subplot.plots[i][0]].unit:
+                            if self.data[subplot.plots[i-1][0].strip()].unit != self.data[subplot.plots[i][0].strip()].unit:
                                 raise ValueError('One Subplot must have the same unit on X-Axis')
-                            if self.data[subplot.plots[i-1][1]].unit != self.data[subplot.plots[i][1]].unit:
+                            if self.data[subplot.plots[i-1][1].strip()].unit != self.data[subplot.plots[i][1].strip()].unit:
                                 raise ValueError('One Subplot must have the same unit on Y-Axis')
 
         # create list of figures, which can be accessed via
